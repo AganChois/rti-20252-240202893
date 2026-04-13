@@ -53,25 +53,25 @@ Mata kuliah ini menggunakan pendekatan **Positivist** (fenomena TI bisa diukur o
 ## Template A.1 — Research Mindset Self-Assessment
 
 ```
-Nama Peneliti    : ____________________
-Tanggal          : ____________________
+Nama Peneliti    : Agan Chois
+Tanggal          : 13 April 2026
 
 1. Ketika membaca klaim "metode X 95% akurat":
-   - Pertanyaan pertama saya: ____________________
-   - Data yang dibutuhkan untuk verifikasi: ____________________
+   - Pertanyaan pertama saya: Bagaimana metode tersebut diuji dan pada dataset apa tingkat akurasi 95% itu diperoleh?
+   - Data yang dibutuhkan untuk verifikasi: Dataset uji (train/test split), ukuran sampel, metode evaluasi (confusion matrix, cross-validation), serta konteks penggunaan metode tersebut.
 
 2. Posisi paradigma:
-   - Pendekatan: [ ] Positivis  [ ] Interpretivis  [ ] Design Science  [ ] Mixed
-   - Alasan: ____________________
+   - Pendekatan: Positivis 
+   - Alasan: Karena penelitian berfokus pada pengukuran objektif (akurasi), menggunakan data kuantitatif dan metode statistik untuk membuktikan kebenaran.
 
 3. Identifikasi distorsi:
-   - Asumsi tersembunyi: ____________________
-   - Sumber bias potensial: ____________________
-   - Langkah mitigasi: ____________________
+   - Asumsi tersembunyi: Bahwa angka 95% berlaku umum untuk semua kondisi dan dataset.
+   - Sumber bias potensial: Bias dataset (tidak representatif), overfitting, atau pemilihan metrik yang tidak tepat.
+   - Langkah mitigasi: Menggunakan dataset yang beragam, melakukan validasi silang (cross-validation), dan membandingkan dengan metode lain.
 
 4. Komitmen etika:
-   - Data yang tidak akan dimanipulasi: ____________________
-   - Batasan yang diakui sejak awal: ____________________
+   - Data yang tidak akan dimanipulasi: Hasil eksperimen, nilai akurasi, serta data mentah penelitian.
+   - Batasan yang diakui sejak awal: Keterbatasan dataset, kemungkinan bias model, dan bahwa hasil mungkin tidak berlaku di semua situasi.
 ```
 
 ---
@@ -81,22 +81,22 @@ Tanggal          : ____________________
 Pilih satu paper riset di bidang TI yang mengklaim "metode X meningkatkan performa." Telusuri setiap tahap Research Trust Model.
 
 **Paper yang dipilih:**
-> Judul: _______________________________________________
-> Penulis (Tahun): ______________________________________
+> Judul: Deep Learning-Based Intrusion Detection System Improves Network Security Performance
+> Penulis (Tahun): Ahmad et al. (2022)
 
 | Tahap | Apa yang Dilakukan | Potensi Distorsi |
 |-------|-------------------|-----------------|
-| Reality → Data | *Contoh: Kumpulkan log server 30 hari* | *Contoh: Hanya ambil jam sibuk* |
-| Data → Processing | | |
-| Processing → Analysis | | |
-| Analysis → Inference | | |
-| Inference → Knowledge | | |
+| Reality → Data | Mengumpulkan dataset trafik jaringan dari dataset publik (misal: KDD Cup / CICIDS) | Dataset tidak merepresentasikan kondisi real-time (data lama / simulasi) |
+| Data → Processing |Data dibersihkan, dinormalisasi, dan dibagi train-test | Data leakage atau pembagian data tidak acak|
+| Processing → Analysis | Melatih model deep learning dan menghitung akurasi|Overfitting karena model terlalu kompleks |
+| Analysis → Inference |Menyimpulkan model lebih baik karena akurasi tinggi |Hanya fokus pada akurasi, abaikan metrik lain (precision, recall) |
+| Inference → Knowledge | Mengklaim metode meningkatkan performa keamanan jaringan| Generalisasi berlebihan ke semua sistem jaringan|
 
-**Distorsi paling besar di tahap:** ________________________
+**Distorsi paling besar di tahap:** Processing → Analysis
 
 **Dua distorsi spesifik yang teridentifikasi:**
-1. ___________________________________________________
-2. ___________________________________________________
+1. Overfitting model sehingga performa tinggi hanya pada dataset uji, bukan kondisi nyata
+2. Penggunaan dataset yang tidak representatif terhadap kondisi jaringan real-world
 
 ---
 
@@ -106,27 +106,27 @@ Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, ha
 
 | Perspektif | Analisis |
 |------------|---------|
-| Kejujuran ilmiah | *Contoh: Laporkan kedua versi (dengan dan tanpa outlier)* |
-| Transparansi | |
-| Peer review | |
+| Kejujuran ilmiah |Peneliti harus melaporkan kedua hasil (dengan dan tanpa outlier) serta menjelaskan alasan penghapusan outlier secara metodologis, bukan untuk “memperindah” hasil. |
+| Transparansi | Proses identifikasi outlier harus dijelaskan (misalnya menggunakan metode statistik seperti IQR atau Z-score), termasuk dampaknya terhadap hasil analisis.|
+| Peer review | Reviewer kemungkinan akan mempertanyakan keputusan menghapus outlier; jika tidak dijelaskan dengan baik, penelitian bisa dianggap bias atau manipulatif.|
 
 **Keputusan akhir dan justifikasi:**
-> ___________________________________________________
+> Data outlier tidak boleh dihapus sembarangan hanya untuk mencapai hasil signifikan. Peneliti sebaiknya menyajikan analisis dengan dan tanpa outlier, disertai justifikasi ilmiah yang jelas. Hal ini menjaga integritas penelitian, menghindari bias, dan memastikan hasil dapat dipercaya serta direplikasi.
 
 ---
 
 ## Latihan 3 — Posisi Paradigma
 
-**Topik riset:** ________________________________________
+**Topik riset:** Pengembangan Sistem IoT untuk Monitoring Kualitas Air Limbah
 
 | Kriteria | Positivis | Interpretivis | Design Science |
 |----------|-----------|---------------|----------------|
-| Kesesuaian dengan topik (1–5) | *Contoh: 4* | *Contoh: 2* | *Contoh: 5* |
-| Jenis data yang dikumpulkan | | | |
-| Limitasi paradigma | | | |
+| Kesesuaian dengan topik (1–5) | 4 | 2 | 5 |
+| Jenis data yang dikumpulkan | Data sensor (pH, suhu, COD, BOD) dalam bentuk numerik| Persepsi pengguna terhadap sistem (wawancara/operator)| Data performa sistem + hasil implementasi prototipe|
+| Limitasi paradigma | Kurang memahami konteks sosial penggunaan sistem| Tidak fokus pada pengukuran teknis sistem| Fokus pada solusi, kadang kurang generalisasi teoritis|
 
-**Paradigma yang dipilih:** _____________________________
-**Alasan:** ____________________________________________
+**Paradigma yang dipilih:** Design Science
+**Alasan:** Karena penelitian berfokus pada pembuatan dan evaluasi artefak (sistem IoT), bukan hanya analisis data atau pemahaman sosial. Tujuannya adalah menghasilkan solusi nyata yang dapat diuji performanya.
 
 ---
 
@@ -135,5 +135,5 @@ Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, ha
 > Sebelum membaca materi ini, apakah pernah mempertanyakan klaim "95% akurat"? Setelah memahami rantai distorsi, pertanyaan apa yang sekarang akan diajukan saat membaca paper?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Sebelumnya saya cenderung langsung percaya pada klaim “95% akurat” tanpa mempertanyakan proses di baliknya.
+> Sekarang saya akan bertanya: dataset apa yang digunakan, bagaimana metode evaluasinya, apakah ada bias atau overfitting, dan apakah hasil tersebut bisa digeneralisasi ke kondisi nyata.~
