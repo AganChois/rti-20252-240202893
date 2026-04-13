@@ -26,7 +26,15 @@ Etika mencegah distorsi yang disengaja (fabrikasi, cherry-picking). Validitas me
 
 ### Paradigma Riset
 
-Mata kuliah ini menggunakan pendekatan **Positivist** (fenomena TI bisa diukur objektif melalui eksperimen terkontrol) diperkuat **Design Science Research** (artefak dibuat sebagai instrumen pengujian hipotesis, bukan tujuan akhir).
+Mata kuliah ini menggunakan pendekatan **Positivist** (fenomena TI bisa diukur objektif melalui eksperimen terkontrol) diperkuat **Design Science Research** (DSR). Penting untuk membedakan keduanya:
+
+| Paradigma | Cara Kerja | Contoh di TI |
+|-----------|-----------|---------------|
+| **Positivis** | Uji hipotesis dengan eksperimen terkontrol | Apakah CNN lebih akurat dari RF pada dataset X? |
+| **Design Science Research** | Bangun artefak (sistem/model/framework) untuk menguji proposisi | Dapatkah arsitektur hybrid CNN+LSTM membuktikan peningkatan recall ≥5%? |
+| **Interpretivis** | Pahami makna melalui konteks & kualitatif | Bagaimana peneliti manafsirkan anomali data sensor IoT? |
+
+Dalam DSR, artefak **bukan tujuan akhir** — ia adalah instrumen untuk menghasilkan pengetahuan. Pertanyaan riset tetap harus difalsifikasi.
 
 ### Mode Berpikir Peneliti
 
@@ -80,7 +88,12 @@ Tanggal          : 13 April 2026
 
 Pilih satu paper riset di bidang TI yang mengklaim "metode X meningkatkan performa." Telusuri setiap tahap Research Trust Model.
 
+> **Panduan pencarian paper:** Gunakan [IEEE Xplore](https://ieeexplore.ieee.org), [ACM Digital Library](https://dl.acm.org), atau Google Scholar. Pilih paper **tahun 2020 ke atas**, di topik yang Anda minati: deteksi anomali, klasifikasi citra, NLP, keamanan siber, IoT, dsb.
+>
+> **Contoh domain TI:** "Deteksi anomali lalu-lintas jaringan menggunakan CNN — akurasi meningkat 94% vs baseline SVM 87%." Distorsi potensial: apakah dataset normal/anomali seimbang? Apakah hanya diuji pada satu vendor traffic?
+
 **Paper yang dipilih:**
+
 > Judul: Deep Learning-Based Intrusion Detection System Improves Network Security Performance
 > Penulis (Tahun): Ahmad et al. (2022)
 
@@ -119,11 +132,19 @@ Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, ha
 
 **Topik riset:** Pengembangan Sistem IoT untuk Monitoring Kualitas Air Limbah
 
+> **Skala 1–5:** 1 = tidak sesuai sama sekali dengan topik ini, 5 = sangat sesuai dan dominan digunakan pada riset bertopik serupa.
+
 | Kriteria | Positivis | Interpretivis | Design Science |
 |----------|-----------|---------------|----------------|
+<<<<<<< HEAD
 | Kesesuaian dengan topik (1–5) | 4 | 2 | 5 |
 | Jenis data yang dikumpulkan | Data sensor (pH, suhu, COD, BOD) dalam bentuk numerik| Persepsi pengguna terhadap sistem (wawancara/operator)| Data performa sistem + hasil implementasi prototipe|
 | Limitasi paradigma | Kurang memahami konteks sosial penggunaan sistem| Tidak fokus pada pengukuran teknis sistem| Fokus pada solusi, kadang kurang generalisasi teoritis|
+=======
+| Kesesuaian dengan topik (1–5) | *Contoh: 4 — topik kuantitatif, cocok uji hipotesis* | *Contoh: 2 — topik tidak studi makna/konteks* | *Contoh: 5 — membangun artefak untuk uji klaim* |
+| Jenis data yang dikumpulkan | *Metrik numerik, log eksperimen* | *Wawancara, observasi kualitatif* | *Hasil uji artefak, komparasi kinerja* |
+| Limitasi paradigma | | | |
+>>>>>>> c96f0d9a29d432f612b2ee6cca9bc239c291aacf
 
 **Paradigma yang dipilih:** Design Science
 **Alasan:** Karena penelitian berfokus pada pembuatan dan evaluasi artefak (sistem IoT), bukan hanya analisis data atau pemahaman sosial. Tujuannya adalah menghasilkan solusi nyata yang dapat diuji performanya.
