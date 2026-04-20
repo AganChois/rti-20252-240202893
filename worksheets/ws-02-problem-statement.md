@@ -67,33 +67,34 @@ Masalah riset yang layak harus memenuhi 5 kriteria:
 PROBLEM STATEMENT BUILDER
 
 Domain & Konteks
-  Domain   : ____________________
-  Konteks  : ____________________
+  Domain   : Internet of Things (IoT) & Lingkungan
+  Konteks  : Monitoring kualitas air limbah rumah tangga secara real-time
+
 
 System Context
-  Input       : ____________________
-  Process     : ____________________
-  Output      : ____________________
-  Outcome     : ____________________
-  Constraints : ____________________
-  Stakeholders: ____________________
+  Input       : Data sensor (pH, suhu, kekeruhan, COD, BOD)
+  Process     : Pengambilan data sensor, pengolahan data, dan pengiriman ke sistem monitoring
+  Output      : Informasi kualitas air dalam bentuk dashboard
+  Outcome     : Peningkatan kontrol terhadap pencemaran air
+  Constraints : Keterbatasan biaya, akurasi sensor, konektivitas internet
+  Stakeholders: Masyarakat, pemerintah, pengelola limbah, peneliti
 
 Fenomena → Problem
-  Fenomena yang diamati             : ____________________
-  Gejala (symptom) yang terukur     : ____________________
-  Masalah yang didiagnosis          : ____________________
-  Masalah riset (researchable)      : ____________________
-  Variabel yang terukur             : ____________________
+  Fenomena yang diamati             : Banyak limbah rumah tangga dibuang tanpa monitoring kualitas air
+  Gejala (symptom) yang terukur     : Tingginya nilai COD/BOD di saluran air
+  Masalah yang didiagnosis          : Tidak adanya sistem monitoring kualitas air secara real-time dan terjangkau
+  Masalah riset (researchable)      : Bagaimana merancang sistem IoT murah yang mampu memonitor kualitas air limbah secara akurat dan real-time?
+  Variabel yang terukur             : pH, suhu, kekeruhan, COD, BOD, latency sistem, akurasi sensor
 
 Problem Quality Check
-  [ ] Clarity — Apakah satu orang membaca akan paham?
-  [ ] Measurability — Apakah ada metrik kuantitatif?
-  [ ] Relevance — Apakah penting untuk domain?
-  [ ] Testability — Apakah bisa gagal?
-  [ ] Impact — Apakah ada kontribusi jika terjawab?
+  [✓] Clarity — Apakah satu orang membaca akan paham?
+  [✓] Measurability — Apakah ada metrik kuantitatif?
+  [✓] Relevance — Apakah penting untuk domain?
+  [✓] Testability — Apakah bisa gagal?
+  [✓] Impact — Apakah ada kontribusi jika terjawab?
 
 Problem Statement (1 paragraf):
-  ____________________
+  Kurangnya sistem monitoring kualitas air limbah rumah tangga secara real-time menyebabkan sulit mendeteksi pencemaran sejak awal, yang ditunjukkan oleh tingginya nilai parameter seperti COD dan BOD di lingkungan perairan. Penelitian ini bertujuan untuk merancang dan mengevaluasi sistem berbasis IoT yang mampu memonitor kualitas air secara akurat, real-time, dan dengan biaya terjangkau. Sistem ini diharapkan dapat memberikan informasi yang relevan bagi masyarakat dan pemangku kepentingan untuk mengurangi dampak pencemaran air.
 ```
 
 ---
@@ -102,18 +103,17 @@ Problem Statement (1 paragraf):
 
 Pilih satu topik di bidang TI yang diminati. Transformasikan melalui 5 tahap Problem Formation Model.
 
-**Topik awal:** ________________________________________
+**Topik awal:** Sistem IoT untuk Monitoring Kualitas Air Limbah
 
 | Tahap | Hasil |
 |-------|-------|
-| Reality | *Contoh: Aplikasi e-commerce sering ditinggalkan saat checkout* |
-| Observed Issue (Symptom) | *Contoh: Bounce rate checkout 68%* |
-| Diagnosed Problem (Root Cause) | |
-| Researchable Problem | |
-| Measurable Variable | |
+| Reality | Limbah rumah tangga dibuang ke lingkungan tanpa pemantauan kualitas air secara rutin |
+| Observed Issue (Symptom) | Nilai parameter kualitas air (COD, BOD, pH) sering melebihi ambang batas, namun tidak terdeteksi secara cepat |
+| Diagnosed Problem (Root Cause) |Tidak adanya sistem monitoring real-time yang terjangkau serta keterbatasan alat ukur konvensional |
+| Researchable Problem |Bagaimana merancang dan mengevaluasi sistem IoT yang mampu memonitor kualitas air limbah secara real-time dengan biaya terjangkau dan akurasi yang memadai?|
+| Measurable Variable |pH, suhu, kekeruhan, COD, BOD, akurasi sensor (%), delay pengiriman data (detik) |
 
-**Apakah terjebak solution-first thinking?** [ ] Ya / [ ] Tidak
-> Jika ya, kembali ke tahap mana? ________________________
+**Apakah terjebak solution-first thinking?** Tidak
 
 ---
 
@@ -123,15 +123,14 @@ Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
 | Komponen | Deskripsi |
 |----------|----------|
-| Input | *Contoh: Request HTTP dari browser pengguna* |
-| Process | |
-| Output | |
-| Outcome | |
-| Constraints | |
-| Stakeholders | |
+| Input | Data dari sensor kualitas air (pH, suhu, kekeruhan, COD, BOD) yang dikumpulkan secara periodik |
+| Process | Akuisisi data sensor → filtering/noise reduction → pengiriman data melalui jaringan (WiFi/LoRa) → penyimpanan dan analisis di server/cloud|
+| Output | Informasi kualitas air dalam bentuk dashboard (grafik, status aman/tidak)|
+| Outcome | Deteksi dini pencemaran air dan peningkatan pengambilan keputusan untuk pengolahan limbah|
+| Constraints | Keterbatasan akurasi sensor, biaya perangkat, kestabilan koneksi internet, konsumsi daya|
+| Stakeholders | Masyarakat, pemerintah, pengelola limbah, peneliti, industri kecil|
 
-**Komponen mana yang paling relevan dengan masalah riset?** _______________
-
+**Komponen mana yang paling relevan dengan masalah riset?** Process
 ---
 
 ## Latihan 3 — Problem Quality Check
@@ -140,18 +139,16 @@ Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 
 | Kriteria | Skor (1-5) | Justifikasi |
 |----------|-----------|-------------|
-| Clarity | *Contoh: 4 — cukup jelas tapi perlu spesifikasi dataset* | |
-| Measurability | | |
-| Relevance | | |
-| Testability | | |
-| Impact | | |
+| Clarity | 3 | Sudah jelas menjelaskan masalah dan tujuan, namun masih bisa dipertegas pada konteks lingkungan spesifik (misalnya rumah tangga atau industri kecil)|
+| Measurability | 3|variable cukup terukur (pH, COD, BOD, akurasi sensor, delay) dan dapat diuji secara kuantitatif |
+| Relevance | 4| cukup relevan dengan isu lingkungan dan kebutuhan monitoring limbah yang meningkat|
+| Testability | 4| Dapat diuji melalui implementasi sistem IoT dan pengujian performa sensor serta sistem|
+| Impact | 3| Memberikan dampak nyata, namun masih bisa ditingkatkan dengan menambahkan aspek skalabilitas atau implementasi luas|
 
-**Skor total:** _____ / 25
+**Skor total:** 17 / 25
 
 **Problem statement versi final (1 paragraf):**
-> ___________________________________________________
-> ___________________________________________________
-
+Kurangnya sistem monitoring kualitas air limbah secara real-time pada lingkungan rumah tangga menyebabkan keterlambatan dalam mendeteksi pencemaran, yang ditunjukkan oleh tingginya parameter seperti COD, BOD, dan ketidakseimbangan pH. ini bertujuan untuk merancang sistem berbasis IoT yang mampu memonitor kualitas air secara real-time dengan tingkat akurasi yang memadai dan biaya yang terjangkau. Sistem ini diharapkan dapat memberikan informasi yang cepat dan akurat untuk mendukung pengambilan keputusan dalam pengelolaan limbah serta mengurangi dampak pencemaran lingkungan.
 ---
 
 ## Refleksi
@@ -159,5 +156,5 @@ Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 > Bandingkan "masalah" yang biasa ditemui saat coding (bug, error) dengan masalah riset. Apa perbedaan fundamental dalam cara mendefinisikan dan mendekati keduanya?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+Masalah coding itu jelas , biasanya ada error dan bisa langsung diperbaiki.
+Masalah riset lebih kompleks dan tidak selalu jelas, harus dianalisis dulu penyebabnya.
