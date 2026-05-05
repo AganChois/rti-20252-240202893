@@ -67,34 +67,34 @@ Jika rantai ini tidak lengkap, RQ belum mature. Bi-directional: RQ yang tidak bi
 ```
 RQ-CONTRIBUTION-HYPOTHESIS
 
-Gap Statement  : ____________________
+Gap Statement  : Belum adanya sistem pemasaran pertanian yang terintegrasi dan dievaluasi secara standar (ISO 9126).
 
 Research Question:
-  Tipe         : [ ] Comparison  [ ] Improvement  [ ] Exploratory
-  Formulasi    : ____________________
-  Variabel IV  : ____________________
-  Variabel DV  : ____________________
-  Metrik       : ____________________
-  Dataset      : ____________________
-  Baseline     : ____________________
+  Tipe         : Improvement 
+  Formulasi    : Bagaimana peningkatan kualitas sistem pemasaran pertanian berbasis web dengan metode prototyping berdasarkan ISO 9126 dibanding sistem konvensional?
+  Variabel IV  : Metode prototyping
+  Variabel DV  : Kualitas sistem
+  Metrik       : Functionality, Usability (88,13%), Maintainability, Portability
+  Dataset      : 25 responden (petani & masyarakat)
+  Baseline     : Sistem pemasaran konvensional (tanpa sistem web)
 
 Quality Check RQ:
-  [ ] Variabel spesifik
-  [ ] Metrik jelas
-  [ ] Baseline ada
-  [ ] Konteks disebutkan
-  [ ] Memerlukan eksperimen (bukan hanya survei literatur)
+  [✓] Variabel spesifik
+  [✓] Metrik jelas
+  [✓] Baseline ada
+  [✓] Konteks disebutkan
+  [✓] Memerlukan eksperimen (bukan hanya survei literatur)
 
 Contribution Statement:
-  Apa yang baru diketahui : ____________________
-  Jenis kontribusi        : [ ] Improvement  [ ] Comparison  [ ] Novel approach
-  Gap yang diisi          : ____________________
+  Apa yang baru diketahui : Sistem berbasis web dengan prototyping terbukti memiliki kualitas baik berdasarkan ISO 9126
+  Jenis kontribusi        : Improvement 
+  Gap yang diisi          : Kurangnya sistem terintegrasi dan evaluasi kualitas standar
 
 Hypothesis Pair:
-  H₀ : ____________________
-  H₁ : ____________________
-  Threshold              : ____________________
-  Justifikasi threshold  : ____________________
+  H₀ : Tidak ada peningkatan kualitas sistem dibanding metode konvensional
+  H₁ : Terdapat peningkatan kualitas sistem menggunakan metode prototyping
+  Threshold              : Usability ≥ 70%
+  Justifikasi threshold  : Standar umum kelayakan usability sistem (di atas rata-rata penerimaan pengguna)
 ```
 
 ---
@@ -103,24 +103,24 @@ Hypothesis Pair:
 
 Gunakan gap yang ditemukan di WS-03. Transformasikan menjadi Research Question.
 
-**Gap dari WS-03:** ____________________________________
+**Gap dari WS-03:** Method Gap + Context Gap
 
 **RQ versi pertama (tulis bebas):**
-> ___________________________________________________
+> Bagaimana kualitas sistem pemasaran pertanian berbasis web menggunakan metode prototyping?
 
 **Evaluasi RQ:**
 
 | Komponen | Ada? | Isi |
 |----------|------|-----|
-| Metode spesifik | *Contoh: Ya — CNN vs RF* | |
-| Metrik terukur | | |
-| Baseline | | |
-| Dataset/konteks | | |
+| Metode spesifik | YA |Prototyping |
+| Metrik terukur |KURANG |(belum disebutkan ISO 9126) |
+| Baseline |TIDAK |- |
+| Dataset/konteks |KURANG |(belum jelas pengguna) |
 
-**Tipe RQ:** [ ] Comparison / [ ] Improvement / [ ] Exploratory
+**Tipe RQ:** Improvement
 
 **RQ versi revisi (setelah evaluasi):**
-> ___________________________________________________
+> Bagaimana peningkatan kualitas sistem pemasaran pertanian berbasis web menggunakan metode prototyping dibanding sistem konvensional berdasarkan metrik ISO 9126 pada 25 pengguna (petani dan masyarakat)?
 
 ---
 
@@ -130,14 +130,14 @@ Rumuskan pasangan hipotesis dari RQ di Latihan 1.
 
 | Komponen | Isi |
 |----------|-----|
-| H₀ | *Contoh: Tidak ada perbedaan signifikan F1-Score antara CNN dan RF pada dataset CIC-MalMem-2022* |
-| H₁ | |
-| Metrik | |
-| Threshold | |
-| Justifikasi threshold | |
+| H₀ | Tidak ada peningkatan kualitas sistem pemasaran pertanian berbasis web menggunakan metode prototyping dibanding sistem konvensional |
+| H₁ | Terdapat peningkatan kualitas sistem pemasaran pertanian berbasis web menggunakan metode prototyping dibanding sistem konvensional|
+| Metrik | ISO 9126: functionality, usability, maintainability, portability|
+| Threshold |Usability ≥ 70% |
+| Justifikasi threshold |70% adalah batas umum penerimaan sistem oleh pengguna (layak digunakan) |
 
-**Apakah hipotesis ini falsifiable?** [ ] Ya / [ ] Tidak
-> Bagaimana cara membuktikannya salah? ___________________
+**Apakah hipotesis ini falsifiable?** Ya 
+> Bagaimana cara membuktikannya salah? Jika hasil pengujian menunjukkan nilai usability < 70% atau tidak ada peningkatan kualitas dibanding sistem konvensional, maka H₁ ditolak.
 
 ---
 
@@ -147,14 +147,14 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 | Tahap | Isi |
 |-------|-----|
-| RQ | *Contoh: Apakah CNN menghasilkan F1-Score lebih tinggi dari RF...* |
-| Variable (IV) | *Contoh: Jenis algoritma (CNN vs RF)* |
-| Variable (DV) | |
-| Metric | |
-| Data source | |
-| Analysis method | |
+| RQ | *Apakah metode prototyping meningkatkan kualitas sistem pemasaran pertanian berbasis web dibanding sistem konvensional berdasarkan ISO 9126? |
+| Variable (IV) | Metode pengembangan (prototyping vs konvensional) |
+| Variable (DV) | Kualitas sistem|
+| Metric |Functionality, Usability (persentase), Maintainability, Portability |
+| Data source |25 responden (petani & masyarakat) + hasil pengujian sistem |
+| Analysis method |Analisis deskriptif kuantitatif (persentase & uji kelayakan ISO 9126) |
 
-**Apakah rantai lengkap?** [ ] Ya / [ ] Tidak
+**Apakah rantai lengkap?** Ya 
 > Jika tidak, tahap mana yang perlu direvisi? ______________
 
 ---
@@ -163,6 +163,10 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 > Ambil satu judul skripsi/paper yang pernah dibaca. Coba ekstrak RQ-nya. Apakah RQ tersebut memenuhi semua komponen (metode, metrik, baseline, konteks)? Jika tidak, apa yang hilang?
 
-**Judul:** _____________________________________________
-**RQ yang diekstrak:** __________________________________
-**Komponen yang hilang:** _______________________________
+**Judul:** Pengembangan Sistem Informasi Pemasaran Produk Pertanian Berbasis Website
+**RQ yang diekstrak:** Bagaimana mengembangkan sistem informasi pemasaran produk pertanian berbasis web yang layak digunakan oleh petani dan masyarakat?
+**Komponen yang hilang:** 
+-Baseline (tidak ada perbandingan dengan sistem lain)
+-Metrik eksplisit di RQ (ISO 9126 digunakan, tapi tidak dirumuskan di RQ)
+-Metode tidak disebut di RQ (prototyping ada di metode, bukan di RQ)
+-Konteks belum spesifik (lokasi & jumlah responden tidak disebut di RQ)
