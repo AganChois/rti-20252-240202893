@@ -66,19 +66,20 @@ Metrik harus ditentukan **sebelum** eksperimen. Memilih metrik setelah melihat d
 ```
 VARIABLE & METRIC DEFINITION
 
-Research Question: ____________________
+Research Question:
+Bagaimana peningkatan kualitas sistem pemasaran pertanian berbasis web menggunakan metode prototyping berdasarkan ISO 9126?
 
-| Variabel | Tipe | Konsep | Metrik | Skala | Satuan | Cara Mengukur | Justifikasi |
-|----------|------|--------|--------|-------|--------|---------------|-------------|
-|          | IV   |        |        |       |        |               |             |
-|          | DV   |        |        |       |        |               |             |
-|          | CV   |        |        |       |        |               |             |
+| Variabel            | Tipe | Konsep                     | Metrik                                   | Skala     | Satuan | Cara Mengukur                          | Justifikasi |
+|---------------------|------|-----------------------------|-------------------------------------------|------------|---------|----------------------------------------|-------------|
+| Metode prototyping  | IV   | Metode pengembangan sistem  | Penggunaan model prototyping              | Nominal    | -       | Implementasi model pengembangan        | Menentukan proses pengembangan sistem |
+| Kualitas sistem     | DV   | Kualitas aplikasi           | Functionality, usability, maintainability, portability | Interval | % / skor | Pengujian ISO 9126 & kuesioner         | Mengukur kelayakan dan kualitas sistem |
+| Responden & perangkat uji | CV | Kondisi pengujian tetap | Jumlah responden & browser yang digunakan | Nominal | Orang/browser | Menyamakan kondisi pengujian | Agar hasil pengujian konsisten |
 
 Alignment Check:
   RQ → Concept → Variable → Metric → Data → Result
-  [ ] Setiap langkah terdokumentasi
-  [ ] Tidak ada "lompatan logis"
-  [ ] Metrik mengukur apa yang dimaksud (construct validity)
+  [✓] Setiap langkah terdokumentasi
+  [✓] Tidak ada "lompatan logis"
+  [✓] Metrik mengukur apa yang dimaksud (construct validity)
 ```
 
 ---
@@ -87,17 +88,16 @@ Alignment Check:
 
 Gunakan RQ dari WS-04. Definisikan variabel dan metriknya.
 
-**RQ:** __________________________________________________
+**RQ:** Bagaimana mengembangkan sistem informasi pemasaran produk pertanian berbasis web yang layak digunakan oleh petani dan masyarakat?
 
 | Variabel | Tipe | Konsep Abstrak | Metrik Konkret | Skala (NOIR) | Satuan |
 |----------|------|---------------|----------------|-------------|--------|
-| *Contoh: Jenis model* | *IV* | *Pendekatan klasifikasi* | *Categorical: CNN vs RF* | *Nominal* | *—* |
-| | DV | | | | |
-| | CV | | | | |
+| Metode prototyping | IV | Metode pengembangan sistem | Prototyping |Nominal | — |
+|Kualitas sistem | DV |Kelayakan & kualitas aplikasi |Functionality, usability, maintainability, portability |Interval |% / skor |
+|Responden & perangkat uji | CV |Kondisi pengujian |Jumlah responden & browser |Nominal |Orang / browser |
 
-**Apakah ada lompatan logis dalam rantai?** [ ] Ya / [ ] Tidak
-> Jika ya, di mana? ____________________________________
-
+**Apakah ada lompatan logis dalam rantai?** Ya 
+> RQ menyebut “layak digunakan” tanpa menjelaskan metrik pengukurannya, yaitu ISO 9126.
 ---
 
 ## Latihan 2 — Evaluasi Metrik
@@ -106,15 +106,15 @@ Evaluasi metrik DV yang dipilih di Latihan 1 menggunakan 3 kriteria.
 
 | Kriteria | Skor (1-5) | Justifikasi |
 |----------|-----------|-------------|
-| Representative | *Contoh: 4 — F1-Score mewakili keseimbangan precision-recall* | |
-| Sensitive | | |
-| Feasible | | |
+| Representative | 4 | ISO 9126 cukup mewakili kualitas sistem|
+| Sensitive | 4| Nilai usability dan functionality dapat menunjukkan perubahan kualitas sistem|
+| Feasible | 5| Mudah diukur menggunakan kuesioner dan pengujian sistem|
 
-**Apakah perlu secondary metric?** [ ] Ya / [ ] Tidak
-> Jika ya, apa dan mengapa? _____________________________
+**Apakah perlu secondary metric?** Ya 
+> Efficiency dan reliability, karena kedua aspek belum diuji optimal pada penelitian.
 
 **Contoh kasus ceiling effect untuk metrik ini:**
-> ___________________________________________________
+> Nilai usability terlalu tinggi (misalnya semua responden memberi nilai bagus) sehingga sulit melihat peningkatan kualitas lebih lanjut.
 
 ---
 
@@ -124,10 +124,10 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 
 | Dimensi | Pertanyaan | Jawaban | Strategi Mitigasi |
 |---------|-----------|---------|------------------|
-| Completeness | *Apakah semua data point terkumpul?* | | |
-| Consistency | *Apakah ada kontradiksi internal?* | | |
-| Validity | *Apakah benar-benar mengukur yang dimaksud?* | | |
-| Representativeness | *Apakah sampel mewakili populasi target?* | | |
+| Completeness | Apakah semua data point terkumpul? | Tidak semua responden mungkin mengisi lengkap| Cek ulang kuesioner sebelum dianalisis|
+| Consistency | Apakah ada kontradiksi internal? | Bisa ada jawaban pengguna yang tidak konsisten| Validasi & pemeriksaan data|
+| Validity | Apakah benar-benar mengukur yang dimaksud? | Ya, menggunakan standar ISO 9126| Gunakan instrumen sesuai standar|
+| Representativeness | Apakah sampel mewakili populasi target? | Belum sepenuhnya karena hanya 25 responden| Tambah jumlah dan variasi responden|
 
 ---
 
@@ -136,5 +136,4 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 > Mengapa memilih metrik setelah melihat data dianggap p-hacking? Apa bedanya dengan eksplorasi data yang sah?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+>Memilih metrik setelah melihat hasil data disebut p-hacking karena metrik dipilih agar hasil terlihat bagus atau signifikan. Berbeda dengan eksplorasi data yang sah, karena eksplorasi bertujuan memahami pola data tanpa mengubah tujuan penelitian awal.
