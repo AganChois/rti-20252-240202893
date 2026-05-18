@@ -80,43 +80,42 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 ```
 SYSTEM-EXPERIMENT MAPPING
 
-Research Question: ____________________
+Research Question:
+Bagaimana peningkatan kualitas sistem pemasaran pertanian berbasis web menggunakan metode prototyping berdasarkan ISO 25010?
 
 Variable → Component Mapping:
-| Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
-|----------|------|-----------------|---------------------------|
-|          | IV   |                 |                           |
-|          | DV   |                 |                           |
-|          | CV   |                 |                           |
+| Variabel            | Tipe | Komponen Sistem        | Cara Manipulasi/Pengukuran |
+|---------------------|------|------------------------|---------------------------|
+| Metode prototyping  | IV   | Backend & proses pengembangan | Menggunakan model prototyping |
+| Kualitas sistem     | DV   | Sistem website         | Pengujian ISO 25010 & kuesioner |
+| Responden & browser | CV   | Lingkungan pengujian   | Jumlah user dan browser dibuat tetap |
 
 4 Prinsip Desain:
-  [ ] Traceability — Setiap komponen bisa ditelusuri ke variabel
-  [ ] Variable Isolation — IV bisa diubah tanpa mengubah CV
-  [ ] Measurement Integration — Pengukuran DV built-in
-  [ ] Reproducibility — Setup bisa direkonstruksi
+  [✓] Traceability — Setiap komponen bisa ditelusuri ke variabel
+  [✓] Variable Isolation — IV bisa diubah tanpa mengubah CV
+  [✓] Measurement Integration — Pengukuran DV built-in
+  [✓] Reproducibility — Setup bisa direkonstruksi
 
 Experimental Setup:
-  Input data     : ____________________
-  Parameter      : ____________________
-  Output format  : ____________________
+  Input data     : Data produk pertanian, data pengguna, data transaksi
+  Parameter      : Aspek ISO 25010 dan jumlah responden
+  Output format  : Persentase, skor pengujian, dan hasil kelayakan sistem
 ```
 
 ---
 
 ## Latihan 1 — Variable-to-Component Mapping
 
-Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
-
-**RQ:** __________________________________________________
+**RQ:** Bagaimana peningkatan kualitas sistem pemasaran pertanian berbasis web menggunakan metode prototyping berdasarkan ISO 25010?
 
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi / Pengukuran |
 |----------|------|-----------------|---------------------------|
-| *Contoh: Jenis model* | *IV* | *Modul classifier (swap RF ↔ CNN)* | *Ganti config `model_type`* |
-| | DV | | |
-| | CV | | |
+| Metode prototyping | IV | Backend & proses pengembangan | Menggunakan model prototyping |
+| Kualitas sistem| DV | Website sistem pemasaran| Pengujian ISO 25010 & kuesioner|
+| Responden & browser| CV | Lingkungan pengujian| Jumlah pengguna dan browser dibuat tetap|
 
-**Apakah semua variabel bisa di-map?** [ ] Ya / [ ] Tidak
-> Jika tidak, komponen apa yang perlu ditambahkan? _________
+**Apakah semua variabel bisa di-map?** Ya 
+> Semua variabel sudah dapat dihubungkan ke komponen sistem.
 
 ---
 
@@ -126,14 +125,14 @@ Evaluasi desain sistem terhadap 4 prinsip.
 
 | Prinsip | Status | Bukti / Penjelasan |
 |---------|--------|-------------------|
-| Traceability | *Contoh: ✅ — setiap modul punya label variabel* | |
-| Modularity | | |
-| Controllability | | |
-| Measurability | | |
+| Traceability | ✅ | Setiap variabel terhubung dengan komponen sistem|
+| Modularity |✅ | Frontend, backend, dan database dapat dipisahkan|
+| Controllability |✅ | Kondisi pengujian seperti responden dan browser dibuat tetap|
+| Measurability | ✅| Kualitas sistem diukur menggunakan ISO 25010 dan kuesioner|
 
-**Prinsip mana yang paling sulit dipenuhi?** _______________
+**Prinsip mana yang paling sulit dipenuhi?** Measurability
 **Strategi untuk mengatasinya:**
-> ___________________________________________________
+> Menggunakan metrik dan instrumen pengujian yang jelas agar hasil pengukuran kualitas sistem lebih akurat.
 
 ---
 
@@ -146,14 +145,14 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 
 | Kondisi | Komponen A | Komponen B | Komponen C | Hasil yang Diharapkan |
 |---------|-----------|-----------|-----------|----------------------|
-| Full | *Contoh: ✅ CNN* | *Contoh: ✅ Temporal features* | *Contoh: ✅ Z-score norm* | *Baseline penuh* |
-| – A | ❌ (ganti RF) | ✅ | ✅ | |
-| – B | ✅ | ❌ (tanpa temporal) | ✅ | |
-| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | |
+| Full | ✅ Metode prototyping | ✅ Website pemasaran | ✅ Pengujian ISO 25010 | Sistem berjalan optimal dan kualitas tinggi |
+| – A | ❌ Tanpa prototyping | ✅ | ✅ | Pengembangan sistem kurang terarah|
+| – B | ✅ | ❌ Tanpa website pemasaran | ✅ | Pengguna sulit mengakses informasi & transaksi|
+| – C | ✅ | ✅ | ❌ Tanpa pengujian ISO 25010 | Kualitas sistem tidak terukur jelas|
 
-**Komponen mana yang diprediksi paling berkontribusi?** _____
+**Komponen mana yang diprediksi paling berkontribusi?** Komponen B (Website pemasaran)
 **Mengapa?**
-> ___________________________________________________
+> Karena website menjadi inti sistem yang digunakan pengguna untuk melihat informasi dan melakukan transaksi produk pertanian.
 
 ---
 
@@ -162,5 +161,4 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 > Apa risiko jika sistem dibangun seperti produk (monolitik, fitur lengkap) lalu baru dilakukan eksperimen? Mengapa arsitektur modular penting untuk riset?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Jika sistem dibuat langsung monolitik dan penuh fitur, maka sulit mengetahui komponen mana yang benar-benar mempengaruhi hasil penelitian. Selain itu, perubahan atau pengujian satu bagian dapat memengaruhi bagian lain sehingga eksperimen menjadi tidak terkontrol. Arsitektur modular penting karena setiap komponen dapat diuji, diubah, dan dianalisis secara terpisah sehingga hasil riset lebih jelas, terukur, dan mudah dikembangkan.
