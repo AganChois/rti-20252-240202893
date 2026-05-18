@@ -68,36 +68,40 @@ Ancaman validitas harus diidentifikasi **sebelum** eksperimen dan mitigasinya di
 ```
 EXPERIMENT DESIGN
 
-Research Question : ____________________
-Hypothesis        : ____________________
-Tipe Eksperimen   : [ ] Comparison  [ ] Ablation  [ ] Parameter
+Research Question :
+Bagaimana peningkatan kualitas sistem pemasaran pertanian berbasis web menggunakan metode prototyping berdasarkan ISO 25010?
+
+Hypothesis :
+H₁ : Sistem berbasis web dengan metode prototyping memiliki kualitas lebih baik dibanding sistem konvensional.
+
+Tipe Eksperimen   : [✓] Comparison  [ ] Ablation  [ ] Parameter
 
 Kondisi Eksperimen:
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control |           |          |             |
-| Treatment |         |          |             |
+| Control | Sistem konvensional/non-web | Tanpa prototyping | Responden, browser, dan data sama |
+| Treatment | Sistem website pertanian | Metode prototyping | Responden, browser, dan data sama |
 
 Fairness Checklist:
-  [ ] Dataset identik untuk semua kondisi
-  [ ] Preprocessing setara
-  [ ] Tuning effort setara
-  [ ] Environment identik
-  [ ] Metrik evaluasi sama
+  [✓] Dataset identik untuk semua kondisi
+  [✓] Preprocessing setara
+  [✓] Tuning effort setara
+  [✓] Environment identik
+  [✓] Metrik evaluasi sama
 
 Threat Analysis:
 | Threat Type | Ancaman Spesifik | Mitigasi |
 |-------------|-----------------|----------|
-| Internal    |                 |          |
-| External    |                 |          |
-| Construct   |                 |          |
-| Conclusion  |                 |          |
+| Internal    | Jawaban responden tidak konsisten | Validasi data & kuesioner |
+| External    | Sampel sedikit dan tidak mewakili semua petani | Menambah variasi responden |
+| Construct   | Konsep “kualitas” tidak sesuai metrik | Menggunakan ISO 25010 |
+| Conclusion  | Hasil kurang kuat karena data terbatas | Menggunakan analisis dan pengujian yang jelas |
 
 Statistical Plan:
-  Uji statistik   : ____________________
-  Justifikasi      : ____________________
-  Alpha            : ____________________
-  Effect size min  : ____________________
+  Uji statistik   : Analisis deskriptif persentase
+  Justifikasi      : Digunakan untuk menilai kualitas sistem berdasarkan ISO 25010
+  Alpha            : 0.05
+  Effect size min  : ≥ 70% usability
 ```
 
 ---
@@ -106,13 +110,13 @@ Statistical Plan:
 
 Susun desain eksperimen berdasarkan RQ, variabel, dan sistem dari WS-04 sampai WS-06.
 
-**RQ:** __________________________________________________
-**Tipe eksperimen:** [ ] Comparison / [ ] Ablation / [ ] Parameter
+**RQ:** Bagaimana peningkatan kualitas sistem pemasaran pertanian berbasis web menggunakan metode prototyping berdasarkan ISO 25010?
+**Tipe eksperimen:** Comparison 
 
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control | *Contoh: RF baseline dari literatur* | *RF* | *Dataset X, 80:20 split, seed 42* |
-| Treatment | | | |
+| Control | Sistem pemasaran konvensional/non-web | Tanpa prototyping | Data, responden, browser, dan kondisi uji sama |
+| Treatment | Sistem pemasaran pertanian berbasis web| Metode prototyping| Data, responden, browser, dan kondisi uji sama|
 
 ---
 
@@ -122,14 +126,14 @@ Evaluasi apakah desain eksperimen di Latihan 1 sudah fair.
 
 | Kriteria | Status | Detail |
 |----------|--------|--------|
-| Dataset identik | *Contoh: ✅ — sama-sama pakai CIC-MalMem-2022* | |
-| Preprocessing setara | | |
-| Tuning effort setara | | |
-| Environment identik | | |
-| Metrik evaluasi sama | | |
+| Dataset identik | ✅| Menggunakan data dan responden yang sama|
+| Preprocessing setara | ✅| Pengolahan data dilakukan dengan langkah yang sama|
+| Tuning effort setara | ✅| Pengembangan dan pengujian dilakukan dengan usaha yang seimbang|
+| Environment identik | ✅| Browser, perangkat, dan kondisi uji dibuat sama|
+| Metrik evaluasi sama | ✅| Semua kondisi diuji menggunakan ISO 25010|
 
-**Ada yang tidak fair?** [ ] Ya / [ ] Tidak
-> Jika ya, bagaimana cara memperbaikinya? ________________
+**Ada yang tidak fair?** Tidak
+> Semua kondisi eksperimen sudah menggunakan pengaturan yang sama sehingga hasil lebih adil dan dapat dibandingkan.
 
 ---
 
@@ -139,15 +143,14 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 
 | Threat Type | Ancaman Spesifik | Mitigasi |
 |-------------|-----------------|----------|
-| Internal | *Contoh: Data leakage antara train-test* | *Contoh: Gunakan stratified split, validasi tidak ada overlap* |
-| External | | |
-| Construct | | |
-| Conclusion | | |
+| Internal | Jawaban responden tidak konsisten | Validasi dan pengecekan data kuesioner |
+| External | Jumlah responden sedikit| Menambah variasi dan jumlah responden|
+| Construct | Konsep “kualitas sistem” tidak sepenuhnya terwakili| Menggunakan standar ISO 25010|
+| Conclusion | Hasil kurang kuat karena data terbatas| Menggunakan analisis dan pengujian yang jelas|
 
-**Ancaman mana yang paling sulit dimitigasi?** _____________
+**Ancaman mana yang paling sulit dimitigasi?** External validity
 **Mengapa?**
-> ___________________________________________________
-
+> Karena jumlah responden terbatas sehingga hasil penelitian belum tentu mewakili seluruh pengguna atau petani secara umum.
 ---
 
 ## Refleksi
@@ -155,6 +158,6 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 > Sebuah paper melaporkan "metode kami mengalahkan semua baseline." Apa 3 pertanyaan pertama yang harus diajukan untuk mengevaluasi klaim ini?
 
 **Jawaban:**
-1. ___________________________________________________
-2. ___________________________________________________
-3. ___________________________________________________
+1. Apakah dataset dan kondisi pengujian sama untuk semua baseline?
+2. Apakah metrik evaluasi yang digunakan sudah adil dan jelas?
+3. Apakah peningkatan hasil benar-benar signifikan dan dapat dibuktikan secara statistik?
