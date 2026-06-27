@@ -109,13 +109,13 @@ Kumpulkan hasil dari WS-02 sampai WS-07 menjadi satu ringkasan proposal.
 
 | Komponen | Sumber | Isi (1-2 kalimat) |
 |----------|--------|-------------------|
-| Problem Statement | WS-02 | *Contoh: Sistem rekomendasi memiliki akurasi tinggi (RMSE 0.87) tetapi satisfaction score rendah (45/100). Gap antara metrik teknis dan kepuasan pengguna belum diteliti.* |
-| Gap | WS-03 | *Contoh: Tidak ada studi yang mengintegrasikan collaborative filtering dengan user-context signals untuk meningkatkan satisfaction.* |
-| RQ | WS-04 | *Contoh: Apakah penambahan context-aware signals pada collaborative filtering meningkatkan satisfaction score tanpa menurunkan RMSE?* |
-| Hipotesis | WS-04 | *Contoh: H₁: Sistem CF+context menghasilkan satisfaction ≥ 70/100 dengan RMSE ≤ 0.90 dibanding baseline CF murni.* |
-| Variabel & Metrik | WS-05 | *Contoh: IV = jenis sistem (CF vs CF+context); DV = satisfaction score (skala 0-100) + RMSE (regresi).* |
-| Sistem | WS-06 | |
-| Desain Eksperimen | WS-07 | |
+| Problem Statement | WS-02 | Kurangnya sistem monitoring kualitas air limbah rumah tangga yang real-time dan terjangkau menyebabkan keterlambatan deteksi pencemaran, yang berisiko bagi lingkungan. |
+| Gap | WS-03 | Studi yang ada cenderung fokus pada skala industri atau sungai, dan belum ada yang spesifik menguji sistem untuk konteks limbah rumah tangga dengan biaya terjangkau (Method & Context Gap). |
+| RQ | WS-04 | Apakah sistem monitoring kualitas air berbasis IoT yang dirancang dengan sensor berbiaya rendah (pH, TDS, Suhu) mampu mendeteksi anomali kualitas air limbah rumah tangga dengan akurasi ≥90% dibandingkan hasil uji laboratorium? |
+| Hipotesis | WS-04 | H₁: Sistem monitoring kualitas air berbasis IoT dengan sensor berbiaya rendah mampu mendeteksi anomali kualitas air limbah rumah tangga dengan akurasi ≥90%. |
+| Variabel & Metrik | WS-05 | IV: Konfigurasi sistem IoT. DV: Akurasi deteksi anomali (%), diukur dengan membandingkan pembacaan sensor dengan hasil uji laboratorium (gold standard). CV: Sampel air limbah, kondisi lingkungan. |
+| Sistem | WS-06 | Sistem terdiri dari node sensor (ESP32, sensor pH, TDS, Suhu), gateway, dan backend/dashboard. Komponen pengukuran (DV) adalah modul analisis yang membandingkan data sensor dengan data lab. |
+| Desain Eksperimen | WS-07 | Desain eksperimen perbandingan (Comparison) antara data yang dihasilkan oleh sistem IoT (treatment) dengan data hasil uji laboratorium (kontrol/gold standard) pada sampel air yang sama. |
 
 ---
 
@@ -125,19 +125,20 @@ Verifikasi 6 koneksi kritis. Isi dengan merujuk tabel di Latihan 1.
 
 | Koneksi | Status | Bukti |
 |---------|--------|-------|
-| Problem → Gap | *Contoh: ✅ — gap muncul dari 15 paper Bab 3 yang tidak ada yang mengkombinasikan CF + context untuk satisfaction* | |
-| Gap → RQ | *Contoh: ✅ — RQ langsung menanyakan apakah CF+context meningkatkan satisfaction* | |
-| RQ → Hypothesis | *Contoh: ✅ — H₁ memprediksi satisfaction ≥ 70 dengan threshold RMSE ≤ 0.90* | |
-| Hypothesis → Metric | | |
-| Metric → System | | |
-| System → Experiment | | |
+| Problem → Gap | ✅ | Masalah kurangnya sistem monitoring di level rumah tangga didukung oleh analisis literatur di WS-03 yang menunjukkan fokus riset pada konteks industri/sungai. |
+| Gap → RQ | ✅ | RQ secara langsung bertujuan untuk menjawab gap dengan menguji kelayakan sistem berbiaya rendah pada konteks rumah tangga yang belum banyak dieksplorasi. |
+| RQ → Hypothesis | ✅ | Hipotesis secara langsung memberikan prediksi terukur (akurasi ≥90%) sebagai jawaban yang diharapkan untuk RQ. |
+| Hypothesis → Metric | ✅ | Hipotesis tentang "akurasi ≥90%" secara eksplisit mendefinisikan metrik utama (Akurasi deteksi anomali) yang akan diukur seperti yang didefinisikan di WS-05. |
+| Metric → System | ✅ | Metrik akurasi (DV) diukur dengan membandingkan output sistem IoT dengan data eksternal (lab), di mana sistem IoT adalah artefak utama yang dibangun (WS-06). |
+| System → Experiment | ✅ | Desain eksperimen di WS-07 secara eksplisit menggunakan data dari sistem yang dibangun sebagai kondisi "treatment" untuk divalidasi terhadap "kontrol" (uji lab). |
 
-**Koneksi mana yang paling lemah?** _______________________
+**Koneksi mana yang paling lemah?** Tidak ada koneksi yang secara fundamental lemah.
 **Bagaimana cara memperkuatnya?**
-> ___________________________________________________
+> Semua koneksi sudah membentuk alur yang logis. Penguatan bisa dilakukan pada detail, misalnya dengan memperjelas justifikasi pemilihan threshold akurasi 90% pada hipotesis.
 
-**Konsistensi horizontal — apakah istilah dan scope konsisten?** [ ] Ya / [ ] Tidak
 > Jika tidak, di bagian mana terjadi inkonsistensi? _________
+**Konsistensi horizontal — apakah istilah dan scope konsisten?** [✓] Ya
+> Jika tidak, di bagian mana terjadi inkonsistensi? Istilah kunci seperti "sistem monitoring IoT", "kualitas air", "akurasi", dan "konteks rumah tangga" digunakan secara konsisten di semua bagian.
 
 ---
 
@@ -147,15 +148,15 @@ Evaluasi proposal mini menggunakan rubrik.
 
 | Kriteria | Skor (1-3) | Justifikasi |
 |----------|-----------|-------------|
-| Koherensi | *Contoh: 2 — koneksi gap→RQ masih lemah karena gap belum cukup narrow* | |
-| Specificity | *Contoh: 3 — metrik (satisfaction 0-100, RMSE) sudah terdefinisi numerik* | |
-| Feasibility | | |
-| Rigor | | |
+| Koherensi | 3 | Semua 6 koneksi vertikal terhubung dengan baik, membentuk argumen "benang merah" yang utuh dari masalah hingga desain eksperimen. |
+| Specificity | 3 | Metrik utama (akurasi deteksi anomali) dan threshold keberhasilan (≥90%) sudah terdefinisi secara numerik dan jelas. |
+| Feasibility | 2 | Lingkup (membangun prototipe IoT dan melakukan uji lab) terdengar realistis untuk 3-6 bulan, namun membutuhkan akses ke laboratorium pengujian air yang mungkin menjadi kendala. |
+| Rigor | 2 | Baseline sudah sangat kuat (uji laboratorium sebagai gold standard), namun justifikasi pemilihan sensor spesifik (misalnya tipe sensor pH/TDS) dibandingkan alternatif lain belum dijelaskan secara mendalam. |
 
-**Skor total:** _____ / 12
+**Skor total:** 10 / 12
 
-**Apakah proposal siap untuk fase eksekusi?** [ ] Ya / [ ] Belum
-> Jika belum, apa yang perlu diperbaiki? __________________
+**Apakah proposal siap untuk fase eksekusi?** [✓] Ya
+> Jika belum, apa yang perlu diperbaiki? Proposal secara fundamental sudah solid. Langkah berikutnya adalah memastikan ketersediaan sumber daya (akses lab, komponen sensor) dan membuat rencana implementasi serta eksekusi yang detail.
 
 ---
 
@@ -163,8 +164,8 @@ Evaluasi proposal mini menggunakan rubrik.
 
 > Dari seluruh proses WS-01 sampai WS-08, bagian mana yang paling mudah dan paling sulit? Mengapa? Apa yang akan dilakukan berbeda jika mengulang dari awal?
 
-**Bagian termudah:** ____________________________________
-**Bagian tersulit:** ____________________________________
+**Bagian termudah:** Mengidentifikasi masalah dan gap awal (WS-02 & WS-03), karena isunya cukup nyata dan didukung oleh observasi umum serta tinjauan literatur awal.
+**Bagian tersulit:** Merumuskan Research Question (RQ) yang spesifik, terukur, dan benar-benar bisa diuji (WS-04). Mengubah masalah umum menjadi pertanyaan riset yang tajam membutuhkan beberapa kali iterasi.
 **Yang akan dilakukan berbeda:**
-> ___________________________________________________
-> ___________________________________________________
+
+> Jika mengulang dari awal, saya akan menghabiskan lebih banyak waktu di WS-04 untuk memastikan RQ sudah benar-benar solid sebelum melanjutkan ke metodologi. Ini akan mencegah "problem drift" dan memastikan semua bagian metodologi (WS-05 hingga WS-07) langsung selaras sejak awal.
