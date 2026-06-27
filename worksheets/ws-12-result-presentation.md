@@ -90,19 +90,21 @@ Bias Check:
 
 ## Latihan 1 — Tabel Hasil
 
-Buat tabel hasil eksperimen Anda (boleh dengan data simulasi jika belum punya data riil).
+Buat tabel hasil eksperimen Anda berdasarkan data yang direncanakan. Data skor di bawah ini adalah simulasi untuk tujuan perencanaan.
 
-| Skenario | Metrik 1 (mean ± std) | Metrik 2 (mean ± std) | n |
-|----------|----------------------|----------------------|---|
-| *Contoh: BERT-base* | *88.4 ± 1.2%* | *45.2 ± 3.1 min* | *10* |
-| | | | |
-| | | | |
+*Tabel 1: Hasil Evaluasi Kualitas Sistem Berdasarkan ISO 25010*
+| Karakteristik Kualitas | Skor Rata-rata (%) (mean ± std) | n |
+|-----------------------|---------------------------------|---|
+| Functionality | 90.5 ± 5.2 | 24 |
+| Usability | 88.1 ± 8.5 | 24 |
+| Portability | 85.5 ± 7.8 | 24 |
+| Maintainability | 82.0 ± 10.1 | 24 |
 
 **Checklist tabel:**
-- [ ] Self-contained (judul jelas, satuan ada, N tercantum)
-- [ ] Mean ± std (bukan single number)
-- [ ] Diurutkan berdasarkan metrik utama
-- [ ] Format konsisten di semua baris
+- [✓] Self-contained (judul jelas, satuan ada, N tercantum)
+- [✓] Mean ± std (bukan single number)
+- [✓] Diurutkan berdasarkan metrik utama (Functionality)
+- [✓] Format konsisten di semua baris
 
 ---
 
@@ -112,9 +114,9 @@ Rencanakan 2-3 grafik untuk menyajikan data dari Latihan 1. Setiap grafik = satu
 
 | # | Jenis Grafik | Pesan | Data yang Digunakan |
 |---|-------------|-------|---------------------|
-| 1 | *Contoh: Bar chart + error bar* | *Perbandingan accuracy antar 3 model* | *Mean accuracy ± std* |
-| 2 | *Box plot* | *Distribusi F1 per model* | *Semua run F1* |
-| 3 | *Scatter plot* | *Trade-off accuracy vs training time* | *Mean accuracy vs mean time* |
+| 1 | Bar chart + error bar | Perbandingan skor rata-rata antar karakteristik kualitas untuk melihat kekuatan dan kelemahan sistem secara umum. | Skor rata-rata (mean) dan standar deviasi (std) dari Tabel 1. |
+| 2 | Box plot | Menunjukkan distribusi, median, dan outlier dari skor Usability yang diberikan oleh 24 responden. | Data skor Usability mentah dari setiap responden. |
+| 3 | Pie chart | Menampilkan komposisi responden berdasarkan peran (Petani vs. Masyarakat Umum) untuk memberikan konteks demografi sampel. | Jumlah responden per kategori. |
 
 ---
 
@@ -126,14 +128,16 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 | Pertanyaan | Jawaban |
 |-----------|---------|
-| Apakah Y-axis menyesatkan? | *Contoh: Ya — A terlihat 2× B padahal beda 0.4%* |
-| Apakah error bar ditampilkan? | |
-| Apakah semua kondisi ditampilkan? | |
-| Apa solusinya? | |
+| Apakah Y-axis menyesatkan? | Ya. Perbedaan 0.4% terlihat sangat besar (A tampak 2x lebih tinggi dari B), padahal secara absolut perbedaannya sangat kecil. Ini adalah bias "truncated axis". |
+| Apakah error bar ditampilkan? | Tidak disebutkan. Jika tidak, ini menyembunyikan variabilitas dan ketidakpastian, yang bisa jadi menunjukkan perbedaan tidak signifikan. |
+| Apakah semua kondisi ditampilkan? | Ya, kondisi A dan B ditampilkan. |
+| Apa solusinya? | Mulai Y-axis dari 0. Selalu sertakan error bar untuk menunjukkan rentang kepercayaan atau standar deviasi. |
 
 **Evaluasi grafik Anda sendiri dari Latihan 2:**
-- [ ] Semua bias check lulus
-- [ ] Ada yang perlu diperbaiki: ____
+- [✓] Semua bias check lulus
+- [ ] Ada yang perlu diperbaiki: Tidak ada, dengan catatan:
+  - Grafik bar chart (1) harus menggunakan Y-axis yang dimulai dari 0 dan menyertakan error bar.
+  - Grafik pie chart (3) hanya akan digunakan jika jumlah kategori sedikit (2-4 kategori) agar tetap mudah dibaca.
 
 ---
 
@@ -141,5 +145,6 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 > Mengapa tabel dan grafik keduanya diperlukan — tidak cukup salah satu saja? Pernahkah Anda membuat grafik yang (tanpa sengaja) menyesatkan?
 
-> ___________________________________________________
-> ___________________________________________________
+Tabel dan grafik melayani tujuan yang berbeda namun saling melengkapi. **Tabel** memberikan **presisi**; menyajikan angka-angka eksak (misal: skor 88.1 ± 8.5) yang dibutuhkan untuk verifikasi dan analisis detail. **Grafik**, di sisi lain, memberikan **pola dan insight visual**; perbandingan antar item atau distribusi data jauh lebih cepat dipahami melalui bar chart atau box plot. Grafik menceritakan "kisah" dari data, sementara tabel menyediakan bukti numerik yang mendukung kisah tersebut.
+
+Ya, saya pernah tanpa sengaja membuat grafik yang menyesatkan. Kesalahan paling umum adalah menggunakan bar chart di Excel yang secara default memotong sumbu Y (tidak mulai dari 0) untuk menonjolkan perbedaan. Hal ini membuat perbedaan kecil terlihat sangat signifikan, yang merupakan bentuk misrepresentasi data. Sejak itu, saya selalu memastikan sumbu Y dimulai dari nol untuk perbandingan yang adil.

@@ -94,17 +94,18 @@ DATA LOG (per run):
 
 Susun execution plan untuk eksperimen Anda. Tentukan skenario, jumlah run, dan seed sebelum eksekusi.
 
+> "Run" dalam konteks ini adalah satu sesi lengkap dari satu responden, mulai dari penggunaan sistem hingga pengisian kuesioner. "Seed" tidak berlaku, namun konsistensi dijaga dengan skenario tugas dan instrumen yang sama untuk semua responden.
+
 | Run # | Skenario | Seed | Parameter Kunci | Status |
 |-------|----------|------|----------------|--------|
-| *1* | *Contoh: BERT-base, DS-1* | *42* | *lr=2e-5, epoch=10* | *Planned* |
-| *2* | *BERT-base, DS-1* | *123* | *lr=2e-5, epoch=10* | *Planned* |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
+| 1 | Evaluasi Sistem Web v1.0 | N/A (Urutan tugas & kuesioner konsisten) | Sistem v1.0, Kuesioner ISO 25010 v1 | Planned |
+| 2 | Evaluasi Sistem Web v1.0 | N/A (Urutan tugas & kuesioner konsisten) | Sistem v1.0, Kuesioner ISO 25010 v1 | Planned |
+| ... | ... | ... | ... | Planned |
+| 25 | Evaluasi Sistem Web v1.0 | N/A (Urutan tugas & kuesioner konsisten) | Sistem v1.0, Kuesioner ISO 25010 v1 | Planned |
 
-**Total skenario:** ____
-**Run per skenario:** ____
-**Total run keseluruhan:** ____
+**Total skenario:** 1
+**Run per skenario:** 25 (sesuai jumlah responden)
+**Total run keseluruhan:** 25
 
 ---
 
@@ -115,25 +116,28 @@ Desain format data log untuk eksperimen Anda. Tentukan field apa saja yang akan 
 **Identitas:**
 | Field | Contoh |
 |-------|--------|
-| Run ID | *run-001* |
-| Timestamp | *2025-03-15T10:30:00* |
-| | |
+| Run ID | `resp-001` |
+| Timestamp | `2026-06-27T10:30:00Z` |
+| Respondent_ID | `anon-f2a4` |
 
 **Konfigurasi:**
 | Field | Contoh |
 |-------|--------|
-| Seed | *42* |
-| Code version | *commit abc1234* |
-| | |
+| System_Version | `v1.0` |
+| Code version | `commit 8f5d3a2` |
+| Instrument_Version | `Kuesioner ISO 25010 v1` |
+| Browser_Info | `Chrome/125.0.0.0 on Windows 11` |
 
 **Hasil:**
 | Metrik | Tipe Data | Range Valid |
 |--------|----------|-------------|
-| *Contoh: Accuracy* | *float* | *0.0 – 1.0* |
-| | | |
-| | | |
+| Usability_Score | float | 0.0 – 100.0 |
+| Functionality_Score | float | 0.0 – 100.0 |
+| Task_Completion_Time_s | integer | > 0 |
+| Qualitative_Feedback | string | - |
 
-**Format output:** [ ] CSV / [ ] JSON / [ ] Database / [ ] Lainnya: ____
+**Format output:** [✓] CSV / [ ] JSON / [✓] Database / [ ] Lainnya: ____
+> Data mentah dari kuesioner akan disimpan di database, kemudian diekspor ke CSV untuk analisis.
 
 ---
 
@@ -143,10 +147,10 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 
 | Jenis Anomali | Contoh | Tindakan |
 |---------------|--------|----------|
-| Run gagal (crash) | *Contoh: OOM pada batch_size=64* | *Contoh: Dokumentasi, re-run batch_size=32, catat perubahan* |
-| Hasil ekstrem | | |
-| Waktu eksekusi anomali | | |
-| Inkonsistensi dengan run lain | | |
+| Run gagal (crash) | Responden tidak bisa submit kuesioner karena error 500. | Dokumentasi error, perbaiki bug, data dari sesi tersebut tidak digunakan, dan cari responden pengganti jika memungkinkan. |
+| Hasil ekstrem | Satu responden memberi skor 1 untuk semua aspek, sementara 24 lainnya memberi skor 4-5. | Data tidak dihapus. Tandai sebagai outlier, periksa feedback kualitatifnya, dan laporkan dalam analisis (misal, dengan membandingkan mean vs median). |
+| Waktu eksekusi anomali | Rata-rata responden butuh 10 menit, satu responden butuh 60 menit. | Catat waktu tersebut. Investigasi dari catatan observasi (jika ada). Gunakan median untuk melaporkan waktu penyelesaian agar tidak terdistorsi oleh outlier. |
+| Inkonsistensi dengan run lain | Responden memberi skor usability 5/5 tapi di feedback menulis "sistem sangat sulit digunakan". | Dokumentasikan sebagai temuan. Ini bukan error, melainkan insight tentang persepsi pengguna. Bahas inkonsistensi ini di bagian Diskusi. |
 
 **Prinsip:** Detect → Investigate → Document → Decide
 
@@ -157,6 +161,6 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 > Pernahkah Anda melaporkan hasil riset/tugas dari single run? Apa risikonya? Bagaimana multiple run mengubah kepercayaan terhadap hasil?
 
 **Pengalaman sebelumnya:**
-> ___________________________________________________
+> Ya, seringkali dalam tugas atau proyek awal, hasil dilaporkan hanya dari satu kali pengujian. Risikonya adalah hasil tersebut bisa jadi hanya kebetulan (fluke), tidak dapat diandalkan, dan tidak memberikan gambaran tentang variabilitas atau ketidakpastian. Kesimpulan yang ditarik menjadi sangat lemah.
 **Yang akan dilakukan berbeda:**
-> ___________________________________________________
+> Dengan melakukan multiple runs (dalam hal ini, pengujian dengan 25 responden), saya dapat menghitung rata-rata, standar deviasi, dan melihat distribusi hasil. Ini mengubah kepercayaan secara fundamental karena kesimpulan tidak lagi didasarkan pada satu titik data, melainkan pada tren yang diamati dari sebuah sampel. Kepercayaan terhadap hasil meningkat karena didukung oleh bukti yang lebih kuat dan terukur.

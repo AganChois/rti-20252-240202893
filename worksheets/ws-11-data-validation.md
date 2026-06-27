@@ -100,15 +100,12 @@ Verifikasi apakah semua data yang direncanakan sudah terkumpul.
 
 | Skenario | Run Direncanakan | Run Tercatat | Missing | Alasan |
 |----------|-----------------|-------------|---------|--------|
-| *Contoh: BERT, DS-1* | *10* | *10* | *0* | *—* |
-| *LSTM, DS-3* | *10* | *8* | *2* | *OOM pada run 7 & 9* |
-| | | | | |
-| | | | | |
+| Evaluasi Sistem Web v1.0 | 25 | 24 | 1 | Satu responden tidak menyelesaikan pengisian kuesioner hingga akhir. |
 
-**Total expected:** ____ | **Total actual:** ____ | **Missing:** ____
+**Total expected:** 25 | **Total actual:** 24 | **Missing:** 1
 
 **Keputusan untuk data missing:**
-> ___________________________________________________
+> Data dari responden yang tidak lengkap tidak akan diikutsertakan dalam analisis kuantitatif (perhitungan skor rata-rata). Namun, feedback kualitatif parsial yang mungkin sudah diberikan akan tetap dicatat sebagai data observasi.
 
 ---
 
@@ -116,27 +113,30 @@ Verifikasi apakah semua data yang direncanakan sudah terkumpul.
 
 Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
-**Dataset sampel (atau data Anda sendiri):**
+**Dataset sampel (data `Usability_Score` dari 7 responden):**
 
-| Run | Accuracy (%) |
+| Run | Usability_Score (%) |
 |-----|-------------|
-| 1 | *91.2* |
-| 2 | *90.8* |
-| 3 | *91.5* |
-| 4 | *78.3* |
-| 5 | *91.0* |
+| resp-001 | 88 |
+| resp-002 | 92 |
+| resp-003 | 85 |
+| resp-004 | 95 |
+| resp-005 | 35 |
+| resp-006 | 90 |
+| resp-007 | 87 |
 
 **Deteksi outlier:**
-- Q1 = ____ | Q3 = ____ | IQR = ____
-- Batas bawah (Q1 - 1.5×IQR) = ____
-- Batas atas (Q3 + 1.5×IQR) = ____
-- Outlier terdeteksi: ____
+- Data terurut: `[35, 85, 87, 88, 90, 92, 95]`
+- Q1 = 85 | Q3 = 92 | IQR = 7
+- Batas bawah (Q1 - 1.5×IQR) = 74.5
+- Batas atas (Q3 + 1.5×IQR) = 102.5
+- Outlier terdeteksi: `35` (karena < 74.5)
 
 **Investigasi (untuk setiap outlier):**
 
 | Outlier | Nilai | Kemungkinan Penyebab | Keputusan |
 |---------|-------|---------------------|-----------|
-| *Run 4* | *78.3* | *Contoh: thermal throttling setelah 3 run berturut* | *Re-run dengan cooling interval* |
+| resp-005 | 35% | Sesuai protokol di WS-10: bisa jadi responden mengalami kesulitan teknis, salah paham instruksi, atau ini adalah feedback asli yang sangat negatif. | Data tidak dihapus. Periksa feedback kualitatif dari `resp-005` untuk konteks. Laporkan median sebagai tambahan dari mean dalam analisis untuk mengurangi dampak outlier. |
 
 ---
 
@@ -144,12 +144,12 @@ Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
 Buat laporan validasi ringkas untuk dataset eksperimen Anda.
 
-**1. Completeness:** ____% data terkumpul
-**2. Format:** [ ] Konsisten / [ ] Ada inkonsistensi: ____
-**3. Range check (anomali):** ____
-**4. Logic check:** [ ] Parameter sesuai plan / [ ] Ada ketidaksesuaian: ____
+**1. Completeness:** 96% data terkumpul (24 dari 25 responden).
+**2. Format:** [✓] Konsisten. Semua data dari database diekspor ke CSV dengan skema kolom yang sama.
+**3. Range check (anomali):** Satu outlier terdeteksi pada `Usability_Score` (nilai 35%, di luar batas bawah IQR). Metrik lain (`Functionality_Score`, `Task_Completion_Time_s`) berada dalam range yang valid.
+**4. Logic check:** [✓] Parameter sesuai plan. Semua data tercatat menggunakan `System_Version: v1.0` dan `Instrument_Version: Kuesioner ISO 25010 v1`.
 
-**Kesimpulan:** [ ] Data siap analisis / [ ] Perlu tindakan: ____
+**Kesimpulan:** [✓] Data siap dianalisis, dengan catatan untuk menangani 1 record yang hilang dan 1 outlier selama analisis sesuai keputusan yang telah dibuat.
 
 ---
 
@@ -157,5 +157,6 @@ Buat laporan validasi ringkas untuk dataset eksperimen Anda.
 
 > Apa perbedaan antara "data yang benar" dan "data yang dipercaya"? Mengapa proses validasi formal diperlukan meskipun data dikumpulkan secara otomatis?
 
-> ___________________________________________________
-> ___________________________________________________
+**Data yang benar (correct data)** adalah data yang valid secara format dan tipe, misalnya skor adalah angka numerik dalam rentang 0-100. **Data yang dipercaya (trusted data)** adalah data yang tidak hanya benar, tetapi juga telah melewati serangkaian pemeriksaan (kelengkapan, konsistensi, anomali) dan diyakini secara akurat merepresentasikan fenomena yang diukur.
+
+Proses validasi formal tetap diperlukan karena pengumpulan otomatis tidak kebal terhadap error. Bug pada kode logger, masalah koneksi jaringan, atau kondisi tak terduga di sisi klien (misalnya, browser crash) dapat menghasilkan data yang "benar" secara format tetapi tidak "dipercaya" secara kontekstual. Validasi adalah jaring pengaman untuk memastikan integritas data sebelum menarik kesimpulan.

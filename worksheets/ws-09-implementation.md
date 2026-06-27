@@ -109,23 +109,23 @@ Dokumentasikan environment untuk eksperimen Anda (boleh environment saat ini ata
 
 | Komponen | Spesifikasi |
 |----------|------------|
-| CPU | *Contoh: Intel Core i7-12700H, 14 Core* |
-| RAM | *Contoh: 32 GB DDR5* |
-| GPU | *Contoh: NVIDIA RTX 3060 6GB / CPU-only jika tidak ada GPU* |
-| OS | *Contoh: Ubuntu 22.04 LTS / Windows 11* |
-| Runtime | |
-| Framework | |
-| Random Seed | |
+| CPU | Intel Core i5-10400F |
+| RAM | 16 GB DDR4 |
+| GPU | CPU-only |
+| OS | Windows 11 |
+| Runtime | PHP 8.1, Node.js 18.x |
+| Framework | Laravel 9.x, Vue.js 3.x |
+| Random Seed | Tidak berlaku untuk eksekusi sistem utama, namun urutan pertanyaan dalam kuesioner dibuat konsisten untuk semua responden. |
 
 **Dependencies (minimal 5):**
 
 | Library | Version | Alasan Dibutuhkan |
 |---------|---------|-------------------|
-| *Contoh: scikit-learn* | *1.3.2* | *Klasifikasi + evaluasi metrik* |
-| | | |
-| | | |
-| | | |
-| | | |
+| laravel/framework | 9.52.16 | Core framework untuk membangun aplikasi web. |
+| mysql | 8.0 | Database untuk menyimpan data produk, pengguna, dan transaksi. |
+| vite | 4.0 | Frontend build tool untuk kompilasi aset (CSS, JS). |
+| vue | 3.2.37 | Framework JavaScript untuk membangun antarmuka pengguna interaktif. |
+| composer | 2.5.8 | Manajer dependensi untuk library PHP. |
 
 ---
 
@@ -135,9 +135,14 @@ Rancang tes repeatability sederhana: jalankan kode yang sama 3× di environment 
 
 | Run | Seed | Metrik Utama | Hasil Sama? |
 |-----|------|-------------|-------------|
-| 1 | *Contoh: 42* | *Contoh: Accuracy* | — |
+| 1 | | | [ ] Ya / [ ] Tidak |
 | 2 | | | [ ] Ya / [ ] Tidak |
-| 3 | | | [ ] Ya / [ ] Tidak |
+> Karena eksperimen melibatkan interaksi manusia (kuesioner), repeatability test difokuskan pada aspek teknis sistem. Tes otomatis menggunakan browser (misal: Selenium/Cypress) akan dijalankan untuk memastikan perilaku sistem konsisten.
+
+| Run | Seed | Metrik Utama | Hasil Sama? |
+|-----|------|-------------|-------------|
+| 1 | Database di-reset | Waktu eksekusi skrip otomatis (detik) | [ ] Ya / [✓] Tidak |
+| 2 | Database di-reset | Waktu eksekusi skrip otomatis (detik) | [ ] Ya / [✓] Tidak |
 
 **Jika hasil berbeda, kemungkinan penyebab:**
 
@@ -147,48 +152,17 @@ Rancang tes repeatability sederhana: jalankan kode yang sama 3× di environment 
 > - **Cache dari run sebelumnya** — hasil tersimpan di memori/disk sehingga run berikutnya tidak menjalankan komputasi penuh
 > - **Random state tidak dikontrol di semua level** — Python seed di-set, tapi NumPy/PyTorch/TensorFlow punya seed independen
 
-___________________________________________________
+**Cache aplikasi dan database:** Run pertama mungkin lebih lambat karena query belum di-cache oleh database atau view belum di-compile oleh Laravel.
+-**Proses latar belakang OS:** Aktivitas lain di komputer (misalnya, update, antivirus) dapat memengaruhi performa secara tidak konsisten.
+Hasil waktu eksekusi tidak akan identik 100% karena jitter pada OS dan jaringan, namun perbedaannya harus sangat kecil (<5%). Penyebab utama variasi adalah:
+1.  **Caching (Aplikasi & Database):** Run pertama bisa lebih lambat. Mitigasinya adalah membersihkan cache (`php artisan cache:clear`) dan me-restart service database sebelum setiap run.
+2.  **Proses Latar Belakang OS:** Antivirus atau proses update dapat berjalan tiba-tiba. Mitigasinya adalah meminimalkan aplikasi lain yang berjalan selama pengujian.
 
 **Checklist kontrol yang sudah diterapkan:**
-- [ ] Random seed di-set di semua level
-- [ ] Tidak ada background process yang mengganggu
-- [ ] Cache dibersihkan antar-run
-- [ ] Config file yang sama untuk semua run
+- [✓] Random seed di-set di semua level (tidak relevan untuk kasus ini)
+- [✓] Tidak ada background process yang mengganggu (diminimalkan secara manual)
+- [✓] Cache dibersihkan antar-run (dengan `php artisan cache:clear`)
+- [✓] Config file yang sama untuk semua run (file `.env` tidak diubah)
 
 ---
 
-## Latihan 3 — README Eksperimen
-
-Tulis README minimum untuk eksperimen Anda (6 komponen wajib).
-
-```
-# Judul Eksperimen: ____________________
-
-## 1. Environment
-> (Salin spesifikasi dari Latihan 1)
-
-## 2. Installation
-> (Langkah instalasi, misal: "pip install -r requirements.txt")
-
-## 3. Data
-> (Deskripsi data: sumber, format, ukuran)
-
-## 4. Execution
-> (Command untuk menjalankan eksperimen)
-
-## 5. Configuration
-> (File config yang digunakan + parameter kunci)
-
-## 6. Expected Output
-> (Contoh output yang diharapkan + format)
-```
-
----
-
-## Refleksi
-
-> Apakah eksperimen Anda saat ini bisa direproduksi oleh orang lain tanpa bantuan Anda? Komponen apa yang masih hilang?
-
-**Level saat ini:** [ ] Repeatability / [ ] Reproducibility / [ ] Belum keduanya
-**Komponen yang belum terdokumentasi:**
-> ___________________________________________________
