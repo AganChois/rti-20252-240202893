@@ -1,0 +1,11 @@
+run_id,cache_mode,traffic_variant,replication,req_duration_p95_ms,req_failed_rate,db_queries_total,cpu_avg_pct,mem_avg_mb
+none__legitimate__rep1,none,legitimate,1,1.5,0.0,5000,5.2,35.5
+hybrid__legitimate__rep1,hybrid,legitimate,1,0.8,0.0,10,2.1,40.1
+none__attack-pool__rep1,none,attack-pool,1,150.7,0.45,50000,95.8,50.2
+hybrid__attack-pool__rep1,hybrid,attack-pool,1,2.1,0.99,50,15.3,42.8
+none__mixed-pool__rep1,none,mixed-pool,1,120.3,0.30,55000,98.1,52.1
+hybrid__mixed-pool__rep1,hybrid,mixed-pool,1,2.5,0.50,60,18.9,45.3
+none__legitimate__rep2,none,legitimate,2,1.6,0.0,5000,5.5,35.8
+hybrid__legitimate__rep2,hybrid,legitimate,2,0.9,0.0,12,2.3,40.3
+none__attack-pool__rep2,none,attack-pool,2,155.2,0.48,50000,96.2,51.5
+hybrid__attack-pool__rep2,hybrid,attack-pool,2,2.3,0.99,52,15.8,43.1

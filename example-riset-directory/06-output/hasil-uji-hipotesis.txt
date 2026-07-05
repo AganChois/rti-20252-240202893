@@ -1,0 +1,21 @@
+Hasil Uji Hipotesis untuk Usability
+=====================================
+
+Dokumen ini merangkum hasil uji statistik untuk hipotesis utama penelitian.
+
+Hipotesis yang Diuji:
+- H0: Skor rata-rata usability <= 70
+- H1: Skor rata-rata usability > 70
+
+Hasil Uji T-Test Satu Sampel (One-Sample T-test):
+- Jumlah Sampel (n): 24
+- Rata-rata Sampel (Mean): 90.92
+- Nilai Acuan (Population Mean): 70
+- T-statistic: 8.685
+- P-value (one-tailed): < 0.0001
+
+Interpretasi:
+Karena p-value (< 0.0001) secara signifikan lebih kecil dari tingkat signifikansi alpha (α = 0.05), kita menolak hipotesis nol (H0).
+
+Kesimpulan:
+Terdapat bukti statistik yang sangat kuat untuk menyimpulkan bahwa skor rata-rata usability dari sistem yang dikembangkan secara signifikan lebih tinggi dari ambang batas kelayakan 70%.

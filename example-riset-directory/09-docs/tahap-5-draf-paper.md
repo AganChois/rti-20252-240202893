@@ -1,7 +1,7 @@
 # Tahap 5 — Penulisan Draf Paper Jurnal
 
-**Status:** Konten naskah selesai — naskah konsolidasi tersedia di [../07-manuskrip/naskah-jurnal.md](../07-manuskrip/naskah-jurnal.md) & [../07-manuskrip/naskah-jurnal.docx](../07-manuskrip/naskah-jurnal.docx), tinjauan pustaka lengkap dengan 18 referensi terverifikasi (BibTeX di [../02-literatur/daftar-pustaka.bib](../02-literatur/daftar-pustaka.bib)). Sisa pekerjaan: keputusan bahasa final & pemindahan ke template jurnal tujuan (lihat "Yang Masih Perlu Dilengkapi").
-**Bergantung pada:** [tahap-4-analisis-data.md](tahap-4-analisis-data.md) — *Selesai*
+**Status:** Konten naskah selesai berdasarkan kompilasi `ws-01` s.d. `ws-15`. Naskah konsolidasi tersedia di ../07-manuskrip/naskah-jurnal.md. Sisa pekerjaan: keputusan bahasa final & pemindahan ke template jurnal tujuan.
+**Bergantung pada:** `ws-14-analysis-interpretation.md` & `ws-15-scientific-writing.md` — *Selesai*
 
 ---
 
@@ -33,4 +33,4 @@ Outline & peta sumber: [../07-manuskrip/00-outline.md](../07-manuskrip/00-outlin
 
 ## Catatan
 
-Bagian Hasil & Analisis mengacu langsung pada output Tahap 4 ([../06-output/](../06-output/)). Ringkasan naratif tambahan (versi lebih panjang, gaya laporan institusional) tersedia di [../08-laporan/laporan-penelitian.md](../08-laporan/laporan-penelitian.md). Bibliografi (18 referensi terverifikasi) dapat diimpor ke Mendeley dari [../02-literatur/daftar-pustaka.bib](../02-literatur/daftar-pustaka.bib).
+Bagian Hasil & Analisis mengacu langsung pada output dari `ws-12` dan `ws-14`. Seluruh draf naskah merupakan sintesis dari `ws-01` hingga `ws-15`. Bibliografi perlu dikompilasi dalam file BibTeX.

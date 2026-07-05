@@ -11,3 +11,4 @@ Berkas administratif penelitian: jadwal bimbingan, korespondensi dengan pembimbi
 ## Berkas
 
 - [jadwal-dan-log-penelitian.md](jadwal-dan-log-penelitian.md) — log kronologis pelaksanaan Tahap 1-5 dan checklist tindak lanjut sebelum submission
+- [catatan-bimbingan-dan-progres.md](catatan-bimbingan-dan-progres.md) — rangkuman catatan bimbingan dan progres penelitian berdasarkan worksheet

@@ -1,8 +1,8 @@
 # 05-kode
 
-Source code implementasi — **Tahap 2** (API Gateway) dan **Tahap 3** (skrip pengujian k6).
+Source code implementasi aplikasi dan skrip analisis data.
 
-## Struktur yang direncanakan
+## Struktur
 
 ```
 05-kode/
