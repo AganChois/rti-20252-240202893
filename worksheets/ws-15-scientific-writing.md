@@ -116,13 +116,13 @@ Buat outline paper untuk riset Anda menggunakan struktur IMRAD.
 
 | Section | Konten Utama (2-3 kalimat) | Target Kata |
 |---------|---------------------------|------------|
-| Abstract | *Contoh: Sistem rekomendasi memiliki akurasi tinggi tapi satisfaction rendah. Studi ini menguji CF+context signal. Hasil: satisfaction naik 38% tanpa penurunan RMSE signifikan.* | 200-250 |
-| Introduction | *Contoh: Konteks: gap antara akurasi dan kepuasan pengguna. Gap: tidak ada studi yang mengkombinasikan CF+context. RQ: apakah CF+context meningkatkan satisfaction?* | 500-700 |
-| Related Work | | 700-1000 |
-| Method | | 800-1200 |
-| Results | | 500-800 |
-| Discussion | | 600-900 |
-| Conclusion | | 200-400 |
+| Abstract | Sistem pemasaran pertanian berbasis web banyak dikembangkan, namun evaluasi kualitasnya seringkali tidak terstandar. Penelitian ini menerapkan metode prototyping untuk membangun sistem dan mengevaluasinya menggunakan standar ISO 25010 dengan 24 responden. Hasil menunjukkan skor usability rata-rata 88.1%, yang secara signifikan melampaui ambang batas kelayakan 70%, membuktikan bahwa metode prototyping efektif untuk menghasilkan sistem berkualitas tinggi. | 200-250 |
+| Introduction | Digitalisasi pemasaran pertanian penting, namun banyak sistem yang ada tidak dievaluasi secara sistematis. Terdapat kesenjangan (gap) dalam penerapan standar kualitas seperti ISO 25010 pada konteks ini. RQ: Bagaimana kualitas sistem pemasaran pertanian berbasis web yang dikembangkan dengan metode prototyping berdasarkan standar ISO 25010? | 500-700 |
+| Related Work | Meringkas studi sebelumnya tentang sistem informasi pertanian (misal: Tandirerung et al., 2020), penggunaan metode prototyping dalam pengembangan sistem, dan penerapan standar ISO untuk evaluasi perangkat lunak. Memposisikan riset ini sebagai yang pertama menggabungkan ketiganya dalam konteks pemasaran pertanian. | 700-1000 |
+| Method | Menjelaskan desain sistem (WS-06), proses pengembangan dengan prototyping, desain eksperimen (WS-07) dengan 24 responden, instrumen kuesioner berbasis ISO 25010 (WS-05), dan prosedur pengumpulan data (WS-10). Menyebutkan rencana analisis statistik (One-Sample t-test) (WS-14). | 800-1200 |
+| Results | Menyajikan data demografi responden dan statistik deskriptif skor kualitas (Functionality, Usability, dll.) dalam bentuk tabel (WS-12). Menampilkan hasil uji hipotesis (p=0.001, Cohen's d=2.1) dan visualisasi utama seperti bar chart skor kualitas (WS-12). | 500-800 |
+| Discussion | Menginterpretasikan hasil: skor usability 88.1% menunjukkan penerimaan pengguna yang sangat baik dan secara praktis signifikan. Membandingkan hasil dengan literatur (skor sebanding dengan Tandirerung et al.). Mendiskusikan implikasi bahwa prototyping adalah metode yang cocok. Mengakui limitasi (sampel kecil, kurang beragam) (WS-14). | 600-900 |
+| Conclusion | Menjawab RQ secara langsung: sistem memiliki kualitas yang sangat baik menurut standar ISO 25010. Menyatakan kontribusi utama: validasi empiris metode prototyping untuk domain ini. Memberikan saran untuk penelitian selanjutnya (menguji pada skala lebih besar, menambah fitur). | 200-400 |
 
 ---
 
@@ -130,24 +130,24 @@ Buat outline paper untuk riset Anda menggunakan struktur IMRAD.
 
 Buat consistency matrix untuk memverifikasi internal consistency paper Anda.
 
-|  | Intro | Method | Result | Discussion | Conclusion |
+| Elemen | Intro | Method | Result | Discussion | Conclusion |
 |--|-------|--------|--------|-----------|-----------|
-| *Contoh: RQ1* | *✓* | *✓* | *✓* | *✓* | *✓* |
-| *Contoh: Metrik-X* | *✗ ←* | *✗ ←* | *✓* | *✗ ←* | *✗ ←* |
-| RQ1 | | | | | |
-| RQ2 | | | | | |
-| Metrik utama | | | | | |
-| Variabel IV | | | | | |
-| Variabel DV | | | | | |
-| Klaim/kontribusi | | | | | |
+| RQ Kualitas Sistem | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Metode Prototyping (IV) | ✓ | ✓ | ✗ | ✓ | ✓ |
+| Kualitas Sistem (DV) | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Metrik ISO 25010 | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Hipotesis (Usability ≥ 70%) | ✗ | ✓ | ✓ | ✓ | ✓ |
+| Kontribusi (Validasi metode) | ✓ | ✗ | ✗ | ✓ | ✓ |
 
 **Isi setiap sel:** ✓ (ada & konsisten), ✗ (missing), ~ (ada tapi inkonsisten)
 
 **Inkonsistensi yang ditemukan:**
-> ___________________________________________________
+> 1.  **Hipotesis (Usability ≥ 70%)** tidak disebutkan di Introduction, padahal ini adalah inti dari pengujian kuantitatif.
+> 2.  **Kontribusi** (validasi metode prototyping) tidak secara eksplisit terhubung dengan bagian Method dan Result, hanya muncul di awal dan akhir.
 
 **Tindakan perbaikan:**
-> ___________________________________________________
+> 1.  Menambahkan kalimat di akhir Introduction yang menyatakan hipotesis yang akan diuji, yaitu kualitas sistem (khususnya usability) diharapkan melampaui standar kelayakan umum (≥70%).
+> 2.  Di bagian Discussion, secara eksplisit hubungkan hasil (skor tinggi) dengan metode yang digunakan (prototyping) untuk memperkuat argumen bahwa metode tersebut berkontribusi pada hasil yang baik.
 
 ---
 
@@ -156,16 +156,16 @@ Buat consistency matrix untuk memverifikasi internal consistency paper Anda.
 Ambil satu paragraf dari tulisan Anda (atau tulis paragraf baru) dan evaluasi kualitasnya.
 
 **Paragraf asli:**
-> (tempel paragraf Anda di sini)
+> Hasil pengujian usability menunjukkan skor yang sangat bagus. Rata-rata skor yang didapat dari responden adalah 88.1%. Angka ini menunjukkan bahwa sistem yang dibuat sangat bisa diterima oleh pengguna dan mudah untuk digunakan. Hasil ini juga signifikan.
 
 | Kriteria | Evaluasi | Perbaikan |
 |----------|---------|-----------|
-| Clarity | *Contoh: kalimat ke-3 ambigu — "performa" bisa berarti accuracy atau speed* | *Ubah menjadi: "accuracy meningkat..."* |
-| Precision | | |
-| Conciseness | | |
+| Clarity | "Sangat bagus" dan "sangat bisa diterima" adalah frasa subjektif dan tidak informatif. | Ganti dengan interpretasi yang lebih konkret terkait persepsi pengguna (efektif, efisien, memuaskan). |
+| Precision | "Signifikan" adalah istilah ambigu. Harus dijelaskan apakah signifikan secara statistik (dengan p-value) atau praktis (dengan effect size). | Tambahkan nilai p-value, standar deviasi (SD), dan Cohen's d untuk memberikan makna yang presisi. |
+| Conciseness | Kalimat "Angka ini menunjukkan bahwa..." dapat digabung dengan kalimat sebelumnya untuk alur yang lebih padat. | Gabungkan beberapa kalimat menjadi satu alur argumen yang ringkas. |
 
 **Paragraf setelah perbaikan:**
-> (tulis paragraf yang sudah diperbaiki)
+> Sistem mencapai skor usability rata-rata 88.1% (SD = 8.5). Hasil ini tidak hanya secara statistik signifikan lebih tinggi dari ambang batas kelayakan 70% (p = 0.001), tetapi juga menunjukkan effect size yang sangat besar (Cohen's d = 2.1). Skor ini mengindikasikan bahwa sistem dinilai sangat efektif, efisien, dan memuaskan oleh pengguna target, serta sebanding dengan temuan pada studi relevan sebelumnya.
 
 ---
 
@@ -173,5 +173,5 @@ Ambil satu paragraf dari tulisan Anda (atau tulis paragraf baru) dan evaluasi ku
 
 > Apa perbedaan antara menulis "tentang" riset dan menulis sebagai "argumen" riset? Bagaimana urutan penulisan (Method → Discussion → Introduction) mengubah kualitas tulisan?
 
-> ___________________________________________________
-> ___________________________________________________
+> Menulis **"tentang" riset** bersifat deskriptif, seperti melaporkan kronologi ("pertama kami melakukan A, lalu kami menemukan B"). Sebaliknya, menulis sebagai **"argumen" riset** bersifat persuasif; setiap bagian (Introduction, Method, Results, Discussion) disusun secara logis untuk membangun sebuah klaim utama (kontribusi). Paper menjadi satu kesatuan argumen yang koheren, bukan sekadar kumpulan fakta.
+> Urutan penulisan **Method → Discussion → Introduction** secara drastis meningkatkan kualitas tulisan karena memastikan argumen dibangun di atas fondasi yang kokoh. Menulis Method dan Results terlebih dahulu memaksa kita untuk berpegang pada fakta konkret. Berdasarkan fakta tersebut, Discussion dapat menginterpretasi makna dan implikasinya secara mendalam. Terakhir, Introduction ditulis untuk membingkai "cerita" yang paling sesuai dengan temuan yang ada, memastikan tidak ada klaim berlebihan dan "benang merah" dari masalah hingga kesimpulan terjaga dengan sempurna.

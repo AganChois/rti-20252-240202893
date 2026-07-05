@@ -113,16 +113,15 @@ ANALYSIS & INTERPRETATION
 ## Latihan 1 — Pemilihan Uji Statistik
 
 Tentukan uji statistik yang tepat untuk eksperimen Anda.
-
 | Pertanyaan | Jawaban |
 |-----------|---------|
-| Berapa grup yang dibandingkan? | *Contoh: 3 (BERT, LSTM, SVM)* |
-| Apakah data berpasangan (paired)? | |
-| Apakah distribusi normal? (uji normalitas) | |
-| **Uji yang dipilih:** | |
-| **Justifikasi:** | |
+| Berapa grup yang dibandingkan? | 1 grup (skor dari 24 responden) yang dibandingkan dengan sebuah nilai standar (threshold). |
+| Apakah data berpasangan (paired)? | Tidak, ini adalah desain one-sample. |
+| Apakah distribusi normal? (uji normalitas) | Perlu diuji (misal: dengan Shapiro-Wilk). Jika normal, gunakan uji parametrik. Jika tidak, gunakan non-parametrik. |
+| **Uji yang dipilih:** | **One-Sample t-test** (jika data terdistribusi normal) atau **Wilcoxon Signed-Rank Test** (jika tidak normal). |
+| **Justifikasi:** | Tujuan riset adalah menguji apakah kualitas sistem (misal: skor usability) dari satu sampel (n=24) secara signifikan melampaui sebuah threshold kelayakan yang telah ditentukan (misalnya, 70%), sesuai dengan hipotesis di WS-04. |
 
-**Effect size yang akan dilaporkan:** [ ] Cohen's d / [ ] Eta-squared / [ ] Lainnya: ____
+**Effect size yang akan dilaporkan:** [✓] Cohen's d / [ ] Eta-squared / [ ] Lainnya: ____
 
 ---
 
@@ -133,18 +132,18 @@ Gunakan data berikut (atau data riil Anda) untuk berlatih interpretasi.
 **Data:**
 | Model | Accuracy (mean ± std) | n |
 |-------|----------------------|---|
-| A | 89.2 ± 1.5 | 10 |
-| B | 87.8 ± 2.1 | 10 |
+| Sistem Baru | 88.1 ± 8.5 | 24 |
+| Threshold | 70.0 | - |
 
-p = 0.045, Cohen's d = 0.74, CI 95% = [0.03, 2.77]
+*Asumsikan hasil uji hipotesis (One-Sample t-test) adalah: p = 0.001, Cohen's d = 2.1, CI 95% = [84.5, 91.7]*
 
 | Aspek | Interpretasi |
 |-------|-------------|
-| Signifikansi statistik | *Contoh: p < 0.05 → signifikan pada α=0.05* |
-| Effect size | *Contoh: d=0.74 → medium-to-large effect* |
-| Practical significance | |
-| Hubungan ke RQ | |
-| Perbandingan literatur | |
+| Signifikansi statistik | Dengan p-value = 0.001 (jauh di bawah α=0.05), kita menolak hipotesis nol. Hasil ini menunjukkan bahwa skor usability rata-rata (88.1%) secara statistik signifikan lebih tinggi dari threshold kelayakan 70%. |
+| Effect size | Cohen's d = 2.1 menunjukkan effect size yang "sangat besar" (large). Ini berarti perbedaan antara skor yang didapat dan threshold kelayakan tidak hanya signifikan secara statistik, tetapi juga sangat besar secara praktis. |
+| Practical significance | Perbedaan yang sangat besar ini memiliki signifikansi praktis yang tinggi. Sistem tidak hanya "lulus" standar kelayakan, tetapi jauh melampauinya, mengindikasikan tingkat penerimaan pengguna yang sangat baik. |
+| Hubungan ke RQ | Hasil ini secara langsung menjawab Research Question (WS-04) dengan memberikan bukti kuantitatif bahwa sistem yang dikembangkan menggunakan metode prototyping memang memiliki kualitas (usability) yang sangat baik, melampaui standar umum. |
+| Perbandingan literatur | Skor 88.1% sebanding dengan hasil dari studi Tandirerung et al. (2020) yang juga melaporkan usability 88.13% (WS-03). Ini menunjukkan bahwa sistem yang dikembangkan mencapai tingkat kualitas yang setara dengan penelitian relevan sebelumnya. |
 
 ---
 
@@ -152,22 +151,21 @@ p = 0.045, Cohen's d = 0.74, CI 95% = [0.03, 2.77]
 
 Latih kemampuan failure analysis: hipotesis TIDAK didukung. Apa yang bisa dipelajari?
 
-**Skenario:** Metode baru Anda mendapat F1 = 83.2%, baseline = 84.7%. p = 0.12 (tidak signifikan).
+**Skenario:** Skor usability rata-rata sistem adalah 72%, dengan p-value = 0.15 saat diuji terhadap threshold 70%. Hipotesis H₁ (terdapat peningkatan kualitas) tidak didukung secara signifikan.
 
 | Pertanyaan | Jawaban |
 |-----------|---------|
-| Apakah ini "gagal"? | *Contoh: Bukan gagal total — hipotesis tidak terdukung adalah temuan yang valid dan bisa menjadi kontribusi.* |
-| Kemungkinan penyebab? | *Contoh: Metode baru menambah kompleksitas komputasi (+40% waktu) tanpa peningkatan F1 yang cukup — overhead tidak sebanding.* |
-| Boundary condition? | *Contoh: Metode ini hanya efektif ketika data ≥ 10.000 record; di dataset kecil (<1.000), baseline lebih stabil.* |
-| Insight yang bisa diambil? | *Contoh: Ada trade-off ukuran data vs kompleksitas — rekomendasikan hybrid approach yang adaptif berdasarkan ukuran dataset.* |
-| Apakah layak dilaporkan? Mengapa? | *Contoh: Ya — negative result + boundary condition analysis adalah kontribusi riset yang diakui komunitas (ex: ACL, SIGIR). Mencegah riset duplikasi yang berulang.* |
+| Apakah ini "gagal"? | Bukan kegagalan riset. Ini adalah temuan valid bahwa sistem yang dikembangkan hanya sedikit di atas standar kelayakan dan peningkatannya tidak signifikan secara statistik. Ini adalah kontribusi yang jujur. |
+| Kemungkinan penyebab? | 1. Desain antarmuka mungkin tidak seintuitif yang diharapkan. 2. Responden mungkin mengalami kesulitan teknis minor yang tidak terdeteksi. 3. Variasi jawaban antar responden sangat tinggi, sehingga menutupi efek rata-rata. |
+| Boundary condition? | Metode prototyping mungkin efektif untuk pengembangan cepat, tetapi untuk mencapai usability yang sangat tinggi, mungkin diperlukan iterasi desain tambahan atau user testing yang lebih mendalam yang tidak termasuk dalam lingkup saat ini. |
+| Insight yang bisa diambil? | Mencapai "kelayakan" (passing grade) relatif mudah, tetapi mencapai "keunggulan" (excellence) membutuhkan usaha lebih. Ada trade-off antara kecepatan pengembangan (via prototyping) dan kualitas UX puncak. |
+| Apakah layak dilaporkan? Mengapa? | Sangat layak. Melaporkan hasil ini mencegah klaim berlebihan tentang efektivitas metode prototyping. Ini memberikan gambaran realistis dan mendorong penelitian masa depan untuk menyelidiki cara meningkatkan usability dari "cukup" menjadi "sangat baik". |
 
 **Limitation terkait:**
 | Jenis | Ancaman | Dampak |
 |-------|---------|--------|
-| *Contoh: Statistical* | *Contoh: Hanya 5 run per skenario* | *Power test rendah* |
-| | | |
-| | | |
+| Statistical / Conclusion | Ukuran sampel kecil (n=24) | Power statistik rendah, sehingga sulit mendeteksi efek yang sebenarnya ada (risiko Type II error). Perbedaan kecil mungkin tidak akan terdeteksi sebagai signifikan. |
+| External Validity | Sampel kurang beragam (dari WS-07) | Hasil mungkin tidak dapat digeneralisasi ke seluruh populasi petani dan masyarakat. Responden yang lebih tech-savvy mungkin memberikan skor lebih tinggi. |
 
 ---
 
@@ -175,5 +173,5 @@ Latih kemampuan failure analysis: hipotesis TIDAK didukung. Apa yang bisa dipela
 
 > Apakah "failure" dalam riset benar-benar gagal, atau justru kontribusi? Bagaimana failure analysis mengubah cara Anda melihat hasil negatif?
 
-> ___________________________________________________
-> ___________________________________________________
+> "Failure" dalam riset, seperti hipotesis yang tidak terdukung, bukanlah kegagalan proyek, melainkan sebuah kontribusi ilmiah yang berharga. Hasil negatif memberikan informasi penting: bahwa sebuah pendekatan tertentu tidak bekerja dalam konteks yang diuji. Ini mencegah peneliti lain membuang waktu dan sumber daya untuk mengejar jalan buntu yang sama.
+> Failure analysis mengubah cara saya melihat hasil negatif dari sebuah "kegagalan" menjadi sebuah "temuan". Ia memaksa kita untuk bertanya "mengapa ini tidak berhasil?" yang seringkali menghasilkan pemahaman yang lebih dalam tentang sebuah masalah, asumsi yang salah, atau batasan (boundary condition) dari sebuah metode. Menemukan di mana dan mengapa sebuah metode gagal seringkali lebih mencerahkan daripada sekadar melaporkan bahwa metode tersebut berhasil.
